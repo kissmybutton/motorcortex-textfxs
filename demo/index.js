@@ -1,0 +1,125 @@
+const MotorCortex = require("@kissmybutton/motorcortex");
+const Player = require("@kissmybutton/motorcortex-player");
+const textfxs = require("../dist/motorcortex-textfxs.umd");
+const Clip = MotorCortex.loadPlugin(textfxs);
+
+const css = `
+body { 
+  background-color : white; 
+}              
+.container,.container2,.container3,.container4 {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+.wrapper{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+  `;
+const html = ` 
+<div class="wrapper">
+  <div class="container container1">
+  </div>
+  <div class="container container2">
+  </div>
+  <div class="container container3">
+  </div>
+</div> 
+  `;
+
+const host = document.getElementById("clip");
+
+const containerParams = {
+  width: "100%",
+  height: "100%"
+};
+
+const clip = new MotorCortex.Clip({
+  css,
+  html,
+  host,
+  fonts: [
+    {
+      type: `google-font`,
+      src: `https://fonts.googleapis.com/css2?family=Pacifico&display=swap`
+    },
+    {
+      type: `google-font`,
+      src: `https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap`
+    },
+    {
+      type: `google-font`,
+      src: `https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap`
+    }
+  ],
+  containerParams,
+  id: "root"
+});
+
+const SvgExposion = new Clip.SvgExposion(
+  {
+    text: "SvgExposion",
+    width: 1728,
+    height: 300,
+    background: "#22292C",
+    colors: [
+      "#FBDB4A",
+      "#F3934A",
+      "#EB547D",
+      "#9F6AA7",
+      "#5476B3",
+      "#2BB19B",
+      "#70B984"
+    ],
+    fontFamily: "Rubik Mono One",
+    speed: 0.75
+  },
+  {
+    selector: ".container1"
+  }
+);
+
+const SvgLines = new Clip.SvgLines(
+  {
+    text: "SvgLines",
+    width: 1728,
+    height: 300,
+    background: "#22292C",
+    colors: ["#64d3ce", "#2a92ce82", "#ff003c", "#2a92ce2e", "#2a92ce1c"],
+    strokeWidth: 3,
+    fontSize: 250,
+    fontFamily: "Rubik Mono One",
+    speed: 0.75
+  },
+  {
+    selector: ".container3"
+  }
+);
+
+const Shadow = new Clip.Shadow(
+  {
+    text: "Shadow",
+    width: 1728,
+    height: 300,
+    background: "#d52e3f",
+    colors: ["#e942f5", "#efa032", "#46b59b", "#017e7f", "#052939", "#c11a2b"],
+    fontSize: 250,
+    speed: 0.75,
+    textColor: "#fcedd8",
+    fontFamily: "Pacifico",
+    reverce: false
+  },
+  {
+    selector: ".container2"
+  }
+);
+
+clip.addIncident(Shadow, 0);
+clip.addIncident(SvgLines, 0);
+clip.addIncident(SvgExposion, 0);
+
+new Player({ clip });
