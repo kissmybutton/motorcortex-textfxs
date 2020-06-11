@@ -60,9 +60,9 @@ const clip = new MotorCortex.Clip({
   id: "root"
 });
 
-const SvgExposion = new Clip.SvgExposion(
+const SvgExplosion = new Clip.SvgExplosion(
   {
-    text: "SvgExposion",
+    text: "SvgExplosion",
     width: 1728,
     height: 300,
     background: "#22292C",
@@ -111,7 +111,7 @@ const Shadow = new Clip.Shadow(
     speed: 0.75,
     textColor: "#fcedd8",
     fontFamily: "Pacifico",
-    reverce: false
+    reverce: true
   },
   {
     selector: ".container2"
@@ -120,6 +120,6 @@ const Shadow = new Clip.Shadow(
 
 clip.addIncident(Shadow, 0);
 clip.addIncident(SvgLines, 0);
-clip.addIncident(SvgExposion, 0);
+clip.addIncident(SvgExplosion, 0);
 
 new Player({ clip });

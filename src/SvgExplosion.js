@@ -2,7 +2,7 @@ const MotorCortex = require("@kissmybutton/motorcortex");
 const AnimeDefinition = require("@kissmybutton/motorcortex-anime");
 const Anime = MotorCortex.loadPlugin(AnimeDefinition);
 
-class SvgExposion extends MotorCortex.API.Clip {
+class SvgExplosion extends MotorCortex.API.Clip {
   get html() {
     this.array = this.attrs.text.split("");
     this.textSize = this.attrs.width / this.array.length; //40 // window.innerWidth/(array.length + 2)
@@ -254,4 +254,4 @@ class SvgExposion extends MotorCortex.API.Clip {
   }
 }
 
-module.exports = SvgExposion;
+module.exports = SvgExplosion;

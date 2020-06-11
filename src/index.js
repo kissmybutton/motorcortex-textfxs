@@ -1,4 +1,4 @@
-const SvgExposion = require("./SvgExposion");
+const SvgExplosion = require("./SvgExplosion");
 const SvgLines = require("./SvgLines");
 const Shadow = require("./Shadow");
 const compositeAttributes = require("./compoAttributes");
@@ -8,9 +8,9 @@ module.exports = {
   npm_name: "@kissmybutton/motorcortex-textfxs",
   incidents: [
     {
-      exportable: SvgExposion,
-      name: "SvgExposion",
-      attributesValidationRules: attrs.SvgExposionValidation
+      exportable: SvgExplosion,
+      name: "SvgExplosion",
+      attributesValidationRules: attrs.SvgExplosionValidation
     },
     {
       exportable: SvgLines,

@@ -1,4 +1,4 @@
-export const SvgExposionValidation = {
+export const SvgExplosionValidation = {
   text: {
     type: "string"
   },

@@ -11,7 +11,7 @@ class SvgLines extends MotorCortex.API.Clip {
     <svg viewBox="0 0 ${this.attrs.width} ${this.attrs.height}">
   <symbol id="s-text">
 
-    <text text-anchor="middle" x="50%" y="68%" class="text--line">Text</text>
+    <text text-anchor="middle" x="50%" y="68%" class="text--line">${this.attrs.text}</text>
   </symbol>
   <g class="g-ants">
     <use xlink:href="#s-text" class="text-copy"></use>

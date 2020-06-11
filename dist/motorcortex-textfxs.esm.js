@@ -2043,18 +2043,18 @@ var index = {
 
 var Anime$1 = MC.loadPlugin(index);
 
-var SvgExposion =
+var SvgExplosion =
 /*#__PURE__*/
 function (_MotorCortex$API$Clip) {
-  _inherits(SvgExposion, _MotorCortex$API$Clip);
+  _inherits(SvgExplosion, _MotorCortex$API$Clip);
 
-  function SvgExposion() {
-    _classCallCheck(this, SvgExposion);
+  function SvgExplosion() {
+    _classCallCheck(this, SvgExplosion);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(SvgExposion).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(SvgExplosion).apply(this, arguments));
   }
 
-  _createClass(SvgExposion, [{
+  _createClass(SvgExplosion, [{
     key: "buildTree",
     value: function buildTree() {
       var waitTIme = 0;
@@ -2219,10 +2219,10 @@ function (_MotorCortex$API$Clip) {
     }
   }]);
 
-  return SvgExposion;
+  return SvgExplosion;
 }(MC.API.Clip);
 
-var SvgExposion_1 = SvgExposion;
+var SvgExplosion_1 = SvgExplosion;
 
 var Anime$2 = MC.loadPlugin(index);
 
@@ -2255,7 +2255,7 @@ function (_MotorCortex$API$Clip) {
     key: "html",
     get: function get() {
       this.speed = this.attrs.speed ? this.attrs.speed : 1;
-      return "\n    <div class=\"wrapper\">\n    <div class=\"container\">\n    <svg viewBox=\"0 0 ".concat(this.attrs.width, " ").concat(this.attrs.height, "\">\n  <symbol id=\"s-text\">\n\n    <text text-anchor=\"middle\" x=\"50%\" y=\"68%\" class=\"text--line\">Text</text>\n  </symbol>\n  <g class=\"g-ants\">\n    <use xlink:href=\"#s-text\" class=\"text-copy\"></use>\n    <use xlink:href=\"#s-text\" class=\"text-copy\"></use>\n    <use xlink:href=\"#s-text\" class=\"text-copy\"></use>\n    <use xlink:href=\"#s-text\" class=\"text-copy\"></use>\n    <use xlink:href=\"#s-text\" class=\"text-copy\"></use>\n  </g>\n</svg> \n</div>\n</div>\n    ");
+      return "\n    <div class=\"wrapper\">\n    <div class=\"container\">\n    <svg viewBox=\"0 0 ".concat(this.attrs.width, " ").concat(this.attrs.height, "\">\n  <symbol id=\"s-text\">\n\n    <text text-anchor=\"middle\" x=\"50%\" y=\"68%\" class=\"text--line\">").concat(this.attrs.text, "</text>\n  </symbol>\n  <g class=\"g-ants\">\n    <use xlink:href=\"#s-text\" class=\"text-copy\"></use>\n    <use xlink:href=\"#s-text\" class=\"text-copy\"></use>\n    <use xlink:href=\"#s-text\" class=\"text-copy\"></use>\n    <use xlink:href=\"#s-text\" class=\"text-copy\"></use>\n    <use xlink:href=\"#s-text\" class=\"text-copy\"></use>\n  </g>\n</svg> \n</div>\n</div>\n    ");
     }
   }, {
     key: "css",
@@ -2479,7 +2479,7 @@ var compoAttributes = {// compo:[
   // ]
 };
 
-var SvgExposionValidation = {
+var SvgExplosionValidation = {
   text: {
     type: "string"
   },
@@ -2585,7 +2585,7 @@ var ShadowValidation = {
 
 var validation = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  SvgExposionValidation: SvgExposionValidation,
+  SvgExplosionValidation: SvgExplosionValidation,
   SvgLineValidation: SvgLineValidation,
   ShadowValidation: ShadowValidation
 });
@@ -2593,9 +2593,9 @@ var validation = /*#__PURE__*/Object.freeze({
 var src = {
   npm_name: "@kissmybutton/motorcortex-textfxs",
   incidents: [{
-    exportable: SvgExposion_1,
-    name: "SvgExposion",
-    attributesValidationRules: validation.SvgExposionValidation
+    exportable: SvgExplosion_1,
+    name: "SvgExplosion",
+    attributesValidationRules: validation.SvgExplosionValidation
   }, {
     exportable: SvgLines_1,
     name: "SvgLines",

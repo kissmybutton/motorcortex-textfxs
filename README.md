@@ -57,12 +57,12 @@ const SvgLines = new Clip.SvgLines(
 | fontSize |  size of the font  |  number |
 
 
-## SvgExposion
+## SvgExplosion
 
 ```javascript
-const SvgExposion = new Clip.SvgExposion(
+const SvgExplosion = new Clip.SvgExplosion(
   {
-    text: "SvgExposion",
+    text: "SvgExplosion",
     width: 1728,
     height: 300,
     background: "#22292C",
@@ -84,7 +84,7 @@ const SvgExposion = new Clip.SvgExposion(
 );
 ```
 
-### SvgExposion Attrs
+### SvgExplosion Attrs
 
 | Name        | Are           | Values  |
 | ------------- |:-------------:| -----:|
@@ -134,6 +134,8 @@ const Shadow = new Clip.Shadow(
 | fontSize |  size of the font  |  number |
 | reverce |  reverse tha animation after finish  |  boolean |
 
+## Font 
+if like to change the font you need to include it in to root clip properties
 
 # Just add your incident to any clip
 
