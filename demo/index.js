@@ -8,8 +8,8 @@ body {
   background-color : white; 
 }              
 .container,.container2,.container3,.container4 {
-  width: 100%;
-  height: 100%;
+  width: 1728px;
+  height: 300px;
   overflow: hidden;
   display: flex;
   justify-content: center;

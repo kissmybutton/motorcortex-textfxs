@@ -53,6 +53,19 @@ function _setPrototypeOf(o, p) {
   return _setPrototypeOf(o, p);
 }
 
+function _isNativeReflectConstruct() {
+  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
+  if (Reflect.construct.sham) return false;
+  if (typeof Proxy === "function") return true;
+
+  try {
+    Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
 function _assertThisInitialized(self) {
   if (self === void 0) {
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -67,6 +80,25 @@ function _possibleConstructorReturn(self, call) {
   }
 
   return _assertThisInitialized(self);
+}
+
+function _createSuper(Derived) {
+  var hasNativeReflectConstruct = _isNativeReflectConstruct();
+
+  return function _createSuperInternal() {
+    var Super = _getPrototypeOf(Derived),
+        result;
+
+    if (hasNativeReflectConstruct) {
+      var NewTarget = _getPrototypeOf(this).constructor;
+
+      result = Reflect.construct(Super, arguments, NewTarget);
+    } else {
+      result = Super.apply(this, arguments);
+    }
+
+    return _possibleConstructorReturn(this, result);
+  };
 }
 
 function _classCallCheck$1(instance, Constructor) {
@@ -171,7 +203,7 @@ function _setPrototypeOf$1(o, p) {
   return _setPrototypeOf$1(o, p);
 }
 
-function _isNativeReflectConstruct() {
+function _isNativeReflectConstruct$1() {
   if (typeof Reflect === "undefined" || !Reflect.construct) return false;
   if (Reflect.construct.sham) return false;
   if (typeof Proxy === "function") return true;
@@ -200,12 +232,12 @@ function _possibleConstructorReturn$1(self, call) {
   return _assertThisInitialized$1(self);
 }
 
-function _createSuper(Derived) {
+function _createSuper$1(Derived) {
   return function () {
     var Super = _getPrototypeOf$1(Derived),
         result;
 
-    if (_isNativeReflectConstruct()) {
+    if (_isNativeReflectConstruct$1()) {
       var NewTarget = _getPrototypeOf$1(this).constructor;
 
       result = Reflect.construct(Super, arguments, NewTarget);
@@ -1089,12 +1121,10 @@ function getMatrix2D(win, element) {
   return qrDecompone(values);
 }
 
-var Anime =
-/*#__PURE__*/
-function (_MC$API$MonoIncident) {
+var Anime = /*#__PURE__*/function (_MC$API$MonoIncident) {
   _inherits$1(Anime, _MC$API$MonoIncident);
 
-  var _super = _createSuper(Anime);
+  var _super = _createSuper$1(Anime);
 
   function Anime() {
     _classCallCheck$1(this, Anime);
@@ -2043,15 +2073,15 @@ var index = {
 
 var Anime$1 = MC.loadPlugin(index);
 
-var SvgExplosion =
-/*#__PURE__*/
-function (_MotorCortex$API$Clip) {
+var SvgExplosion = /*#__PURE__*/function (_MotorCortex$API$Clip) {
   _inherits(SvgExplosion, _MotorCortex$API$Clip);
+
+  var _super = _createSuper(SvgExplosion);
 
   function SvgExplosion() {
     _classCallCheck(this, SvgExplosion);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(SvgExplosion).apply(this, arguments));
+    return _super.apply(this, arguments);
   }
 
   _createClass(SvgExplosion, [{
@@ -2226,15 +2256,15 @@ var SvgExplosion_1 = SvgExplosion;
 
 var Anime$2 = MC.loadPlugin(index);
 
-var SvgLines =
-/*#__PURE__*/
-function (_MotorCortex$API$Clip) {
+var SvgLines = /*#__PURE__*/function (_MotorCortex$API$Clip) {
   _inherits(SvgLines, _MotorCortex$API$Clip);
+
+  var _super = _createSuper(SvgLines);
 
   function SvgLines() {
     _classCallCheck(this, SvgLines);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(SvgLines).apply(this, arguments));
+    return _super.apply(this, arguments);
   }
 
   _createClass(SvgLines, [{
@@ -2271,15 +2301,15 @@ var SvgLines_1 = SvgLines;
 
 var Anime$3 = MC.loadPlugin(index);
 
-var Shadow =
-/*#__PURE__*/
-function (_MotorCortex$API$Clip) {
+var Shadow = /*#__PURE__*/function (_MotorCortex$API$Clip) {
   _inherits(Shadow, _MotorCortex$API$Clip);
+
+  var _super = _createSuper(Shadow);
 
   function Shadow() {
     _classCallCheck(this, Shadow);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Shadow).apply(this, arguments));
+    return _super.apply(this, arguments);
   }
 
   _createClass(Shadow, [{
