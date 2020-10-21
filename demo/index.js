@@ -1,6 +1,6 @@
 const MotorCortex = require("@kissmybutton/motorcortex");
 const Player = require("@kissmybutton/motorcortex-player");
-const textfxs = require("../dist/motorcortex-textfxs.umd");
+const textfxs = require("../src/index");
 const Clip = MotorCortex.loadPlugin(textfxs);
 
 const css = `
@@ -18,6 +18,7 @@ body {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  background: gainsboro;
 }
   `;
 const html = ` 
@@ -54,6 +55,11 @@ const clip = new MotorCortex.Clip({
     {
       type: `google-font`,
       src: `https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap`
+    },
+    {
+      type: "google-font",
+      src:
+        "https://fonts.googleapis.com/css2?family=Commissioner:wght@100;200;300;400;500;600;700;800;900&display=swap"
     }
   ],
   containerParams,
@@ -118,8 +124,25 @@ const Shadow = new Clip.Shadow(
   }
 );
 
+// const FontWeight = new Clip.FontWeight(
+//   {
+//     width: 1728,
+//     height: 300,
+//     text: "FontWeight Animation",
+//     color: "#ff0000",
+//     rows: 10,
+//     fontSize: 20,
+//     fontFamily: "Commissioner",
+//     repeats: 8
+//   },
+//   {
+//     selector: ".container2"
+//   }
+// );
+
 clip.addIncident(Shadow, 0);
 clip.addIncident(SvgLines, 0);
 clip.addIncident(SvgExplosion, 0);
+// clip.addIncident(FontWeight, 0);
 
-new Player({ clip });
+new Player({ clip, timeFormat: "ms" });

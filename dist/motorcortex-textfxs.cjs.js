@@ -2511,137 +2511,92 @@ var Shadow = /*#__PURE__*/function (_MotorCortex$API$Clip) {
 
 var Shadow_1 = Shadow;
 
+var Anime$4 = MC__default['default'].loadPlugin(index);
+
+var FontWeight = /*#__PURE__*/function (_MotorCortex$API$Clip) {
+  _inherits(FontWeight, _MotorCortex$API$Clip);
+
+  var _super = _createSuper(FontWeight);
+
+  function FontWeight() {
+    _classCallCheck(this, FontWeight);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(FontWeight, [{
+    key: "buildTree",
+    value: function buildTree() {
+      var fontWeight900 = new Anime$4.Anime({
+        animatedAttrs: {
+          fontWeight: "900"
+        }
+      }, {
+        duration: 300,
+        selector: ".text-item",
+        delay: "@stagger(0, 300)" // repeats: this.attrs.repeats
+
+      });
+      this.addIncident(fontWeight900, 0);
+      var fontWeight100 = new Anime$4.Anime({
+        animatedAttrs: {
+          fontWeight: "100"
+        }
+      }, {
+        duration: 300,
+        selector: ".text-item",
+        delay: "@stagger(0, 300)" // repeats: this.attrs.repeats
+
+      });
+      this.addIncident(fontWeight100, 600);
+    }
+  }, {
+    key: "html",
+    get: function get() {
+      var textList = [];
+
+      for (var i = 1; i <= this.attrs.rows; i++) {
+        textList.push("<div class=\"text-item\">".concat(this.attrs.text, "</div>"));
+      }
+
+      return "\n    <div class=\"wrapper\">\n      <div class=\"text\">\n      ".concat(textList.join(""), "\n      </div>\n    </div>\n    ");
+    }
+  }, {
+    key: "css",
+    get: function get() {
+      return "\n\n    .wrapper{\n      width: ".concat(this.attrs.width, "px;\n      height: ").concat(this.attrs.height, "px;\n      display: flex;\n      align-content: center;\n      justify-content: center;\n      align-items: center;\n    }\n    .text{\n      font-size:").concat(this.attrs.fontSize, "px;\n      color:").concat(this.attrs.color, ";\n      text-transform:uppercase;\n      font-family: ").concat(this.attrs.fontFamily, ";\n      position: absolute;\n      font-weight: 100;\n    }\n   \n  ");
+    }
+  }]);
+
+  return FontWeight;
+}(MC__default['default'].API.Clip);
+
+var FontWeight_1 = FontWeight;
+
 var compoAttributes = {// compo:[
   //     "compo1",
   //     "compo2"
   // ]
 };
 
-var SvgExplosionValidation = {
-  text: {
-    type: "string"
-  },
-  colors: {
-    optional: true,
-    type: "array",
-    min: 2,
-    items: {
-      optional: true,
-      type: "color"
-    }
-  },
-  width: {
-    type: "number"
-  },
-  height: {
-    type: "number"
-  },
-  background: {
-    optional: true,
-    type: "color"
-  },
-  fontFamily: {
-    type: "string"
-  }
-};
-var SvgLineValidation = {
-  text: {
-    type: "string"
-  },
-  colors: {
-    optional: true,
-    type: "array",
-    min: 2,
-    items: {
-      optional: true,
-      type: "color"
-    }
-  },
-  width: {
-    type: "number"
-  },
-  fontSize: {
-    type: "number"
-  },
-  strokeWidth: {
-    type: "number"
-  },
-  height: {
-    type: "number"
-  },
-  background: {
-    optional: true,
-    type: "color"
-  },
-  fontFamily: {
-    type: "string"
-  },
-  speed: {
-    type: "number",
-    optional: true
-  }
-};
-var ShadowValidation = {
-  text: {
-    type: "string"
-  },
-  colors: {
-    optional: true,
-    type: "array",
-    min: 2,
-    items: {
-      optional: true,
-      type: "color"
-    }
-  },
-  width: {
-    type: "number"
-  },
-  fontSize: {
-    type: "number"
-  },
-  speed: {
-    type: "number"
-  },
-  fontFamily: {
-    type: "string"
-  },
-  textColor: {
-    type: "string"
-  },
-  height: {
-    type: "number"
-  },
-  background: {
-    optional: true,
-    type: "color"
-  },
-  reverce: {
-    type: "boolean"
-  }
-};
-
-var validation = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  SvgExplosionValidation: SvgExplosionValidation,
-  SvgLineValidation: SvgLineValidation,
-  ShadowValidation: ShadowValidation
-});
-
 var src = {
   npm_name: "@kissmybutton/motorcortex-textfxs",
   incidents: [{
     exportable: SvgExplosion_1,
-    name: "SvgExplosion",
-    attributesValidationRules: validation.SvgExplosionValidation
+    name: "SvgExplosion" // attributesValidationRules: attrs.SvgExplosionValidation
+
   }, {
     exportable: SvgLines_1,
-    name: "SvgLines",
-    attributesValidationRules: validation.SvgLineValidation
+    name: "SvgLines" // attributesValidationRules: attrs.SvgLineValidation
+
   }, {
     exportable: Shadow_1,
-    name: "Shadow",
-    attributesValidationRules: validation.ShadowValidation
+    name: "Shadow" // attributesValidationRules: attrs.ShadowValidation
+
+  }, {
+    exportable: FontWeight_1,
+    name: "FontWeight" // attributesValidationRules: attrs.ShadowValidation
+
   }],
   compositeAttributes: compoAttributes
 };
