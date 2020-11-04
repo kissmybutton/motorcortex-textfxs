@@ -41,37 +41,42 @@ class FontWeight extends MotorCortex.API.Clip {
   }
 
   buildTree() {
-    const fontWeight900 = new Anime.Anime(
+    const fontWeight = new MotorCortex.Combo(
       {
-        animatedAttrs: {
-          fontWeight: "900"
-        }
+        incidents:[
+          {
+            incidentClass: Anime.Anime,
+            attrs:{
+              animatedAttrs: {
+                fontWeight: "900"
+              }
+            },
+            props:{
+              duration:300,
+            },
+            position: 0
+          },
+          {
+            incidentClass: Anime.Anime,
+            attrs:{
+              animatedAttrs: {
+                fontWeight: "100"
+              }
+            },
+            props:{
+              duration:300,
+             
+            },
+            position: 300
+          }
+        ]
       },
       {
-        duration: 300,
         selector: `.text-item`,
         delay: `@stagger(0, 300)`
-        // repeats: this.attrs.repeats
       }
-    );
-
-    this.addIncident(fontWeight900, 0);
-
-    const fontWeight100 = new Anime.Anime(
-      {
-        animatedAttrs: {
-          fontWeight: "100"
-        }
-      },
-      {
-        duration: 300,
-        selector: `.text-item`,
-        delay: `@stagger(0, 300)`
-        // repeats: this.attrs.repeats
-      }
-    );
-
-    this.addIncident(fontWeight100, 600);
+    )
+    this.addIncident(fontWeight,0)
   }
 }
 

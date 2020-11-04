@@ -2527,28 +2527,35 @@ var FontWeight = /*#__PURE__*/function (_MotorCortex$API$Clip) {
   _createClass(FontWeight, [{
     key: "buildTree",
     value: function buildTree() {
-      var fontWeight900 = new Anime$4.Anime({
-        animatedAttrs: {
-          fontWeight: "900"
-        }
+      var fontWeight = new MC__default['default'].Combo({
+        incidents: [{
+          incidentClass: Anime$4.Anime,
+          attrs: {
+            animatedAttrs: {
+              fontWeight: "900"
+            }
+          },
+          props: {
+            duration: 300
+          },
+          position: 0
+        }, {
+          incidentClass: Anime$4.Anime,
+          attrs: {
+            animatedAttrs: {
+              fontWeight: "100"
+            }
+          },
+          props: {
+            duration: 300
+          },
+          position: 300
+        }]
       }, {
-        duration: 300,
         selector: ".text-item",
-        delay: "@stagger(0, 300)" // repeats: this.attrs.repeats
-
+        delay: "@stagger(0, 300)"
       });
-      this.addIncident(fontWeight900, 0);
-      var fontWeight100 = new Anime$4.Anime({
-        animatedAttrs: {
-          fontWeight: "100"
-        }
-      }, {
-        duration: 300,
-        selector: ".text-item",
-        delay: "@stagger(0, 300)" // repeats: this.attrs.repeats
-
-      });
-      this.addIncident(fontWeight100, 600);
+      this.addIncident(fontWeight, 0);
     }
   }, {
     key: "html",

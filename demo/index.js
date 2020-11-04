@@ -29,6 +29,8 @@ const html = `
   </div>
   <div class="container container3">
   </div>
+  <div class="container container4">
+  </div>
 </div> 
   `;
 
@@ -124,25 +126,26 @@ const Shadow = new Clip.Shadow(
   }
 );
 
-// const FontWeight = new Clip.FontWeight(
-//   {
-//     width: 1728,
-//     height: 300,
-//     text: "FontWeight Animation",
-//     color: "#ff0000",
-//     rows: 10,
-//     fontSize: 20,
-//     fontFamily: "Commissioner",
-//     repeats: 8
-//   },
-//   {
-//     selector: ".container2"
-//   }
-// );
+const FontWeight = new Clip.FontWeight(
+  {
+    width: 1728,
+    height: 300,
+    text: "FontWeight Animation",
+    color: "#ff0000",
+    rows: 10,
+    fontSize: 20,
+    fontFamily: "Commissioner",
+    repeats: 8
+  },
+  {
+    selector: ".container4"
+  }
+);
 
 clip.addIncident(Shadow, 0);
 clip.addIncident(SvgLines, 0);
 clip.addIncident(SvgExplosion, 0);
-// clip.addIncident(FontWeight, 0);
+clip.addIncident(FontWeight, 0);
+window.clip = clip
 
 new Player({ clip, timeFormat: "ms" });
