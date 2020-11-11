@@ -2,7 +2,7 @@ const MotorCortex = require("@kissmybutton/motorcortex");
 const AnimeDefinition = require("@kissmybutton/motorcortex-anime");
 const Anime = MotorCortex.loadPlugin(AnimeDefinition);
 
-class FontWeight extends MotorCortex.API.Clip {
+class FontWeight extends MotorCortex.HTMLClip {
   get html() {
     const textList = [];
     for (let i = 1; i <= this.attrs.rows; i++) {

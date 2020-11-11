@@ -2,7 +2,7 @@ const MotorCortex = require("@kissmybutton/motorcortex");
 const AnimeDefinition = require("@kissmybutton/motorcortex-anime");
 const Anime = MotorCortex.loadPlugin(AnimeDefinition);
 
-class Shadow extends MotorCortex.API.Clip {
+class Shadow extends MotorCortex.HTMLClip {
   get html() {
     this.speed = this.attrs.speed ? this.attrs.speed : 1;
     return `
