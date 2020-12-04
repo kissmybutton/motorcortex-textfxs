@@ -1,9 +1,23 @@
 const MotorCortex = require("@kissmybutton/motorcortex");
 const AnimeDefinition = require("@kissmybutton/motorcortex-anime");
+const { fontFamilyHelper } = require("./helpers");
 const Anime = MotorCortex.loadPlugin(AnimeDefinition);
 
+
 class SvgExplosion extends MotorCortex.HTMLClip {
+
+  get fonts(){
+    const font =[
+      {
+          type: `google-font`,
+          src: `https://fonts.googleapis.com/css2?family=${fontFamilyHelper(this.attrs.fontFamily,this.attrs.fontWeight)}&display=swap`
+        },
+    ]
+    return font
+  }
+
   get html() {
+    this.speed = this.attrs.speed ? this.attrs.speed : 1;
     this.array = this.attrs.text.split("");
     this.textSize = this.attrs.width / this.array.length; //40 // window.innerWidth/(array.length + 2)
     let html3 = "";
@@ -127,7 +141,7 @@ class SvgExplosion extends MotorCortex.HTMLClip {
           }
         },
         {
-          duration: 200,
+          duration: 200*this.attrs.speed,
           selector: ".letter-" + i,
           easing: "easeOutExpo"
         }
@@ -184,7 +198,7 @@ class SvgExplosion extends MotorCortex.HTMLClip {
             }
           },
           {
-            duration: 600,
+            duration: 600*this.attrs.speed,
             selector: `.circ-${i}-${j}`,
             easing: "easeOutQuint"
           }
@@ -211,7 +225,7 @@ class SvgExplosion extends MotorCortex.HTMLClip {
             }
           },
           {
-            duration: 600,
+            duration: 600*this.attrs.speed,
             selector: `.poligon-${i}-${j}`,
             easing: "easeOutQuint"
           }
@@ -240,15 +254,15 @@ class SvgExplosion extends MotorCortex.HTMLClip {
           }
         },
         {
-          duration: 200,
+          duration: 200*this.attrs.speed,
           selector: ".letter-" + i,
           easing: "easeOutExpo"
         }
       );
 
-      this.addIncident(textAnimation, 200 * (i + 1) + waitTIme);
-      this.addIncident(polyMcGrou, 200 * (i + 1) + waitTIme);
-      this.addIncident(textAnimation2, 200 + 200 * (i + 1) + waitTIme);
+      this.addIncident(textAnimation, (200 * (i + 1) + waitTIme)*this.attrs.speed);
+      this.addIncident(polyMcGrou, (200 * (i + 1) + waitTIme)*this.attrs.speed);
+      this.addIncident(textAnimation2, (200 + 200 * (i + 1) + waitTIme)*this.attrs.speed);
       waitTIme = 200 * (i + 1);
     }
   }

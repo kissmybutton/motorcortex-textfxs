@@ -2283,6 +2283,22 @@ var index = {
   compositeAttributes: compositeAttributes
 };
 
+var fontFamilyHelper = function fontFamilyHelper(fontFamily, fontWeight) {
+  var wordlist = fontFamily.split(" ").join("+");
+
+  if (fontWeight) {
+    wordlist += ":wght@".concat(fontWeight);
+  }
+
+  return wordlist;
+};
+
+var helpers = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  fontFamilyHelper: fontFamilyHelper
+});
+
+var fontFamilyHelper$1 = helpers.fontFamilyHelper;
 var Anime$1 = MotorCortex.loadPlugin(index);
 
 var SvgExplosion = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
@@ -2323,7 +2339,7 @@ var SvgExplosion = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
             }
           }
         }, {
-          duration: 200,
+          duration: 200 * this.attrs.speed,
           selector: ".letter-" + i,
           easing: "easeOutExpo"
         });
@@ -2373,7 +2389,7 @@ var SvgExplosion = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
               opacity: 1
             }
           }, {
-            duration: 600,
+            duration: 600 * this.attrs.speed,
             selector: ".circ-".concat(i, "-").concat(j),
             easing: "easeOutQuint"
           });
@@ -2396,7 +2412,7 @@ var SvgExplosion = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
               opacity: 1
             }
           }, {
-            duration: 600,
+            duration: 600 * this.attrs.speed,
             selector: ".poligon-".concat(i, "-").concat(j),
             easing: "easeOutQuint"
           });
@@ -2420,19 +2436,29 @@ var SvgExplosion = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
             }
           }
         }, {
-          duration: 200,
+          duration: 200 * this.attrs.speed,
           selector: ".letter-" + i,
           easing: "easeOutExpo"
         });
-        this.addIncident(textAnimation, 200 * (i + 1) + waitTIme);
-        this.addIncident(polyMcGrou, 200 * (i + 1) + waitTIme);
-        this.addIncident(textAnimation2, 200 + 200 * (i + 1) + waitTIme);
+        this.addIncident(textAnimation, (200 * (i + 1) + waitTIme) * this.attrs.speed);
+        this.addIncident(polyMcGrou, (200 * (i + 1) + waitTIme) * this.attrs.speed);
+        this.addIncident(textAnimation2, (200 + 200 * (i + 1) + waitTIme) * this.attrs.speed);
         waitTIme = 200 * (i + 1);
       }
     }
   }, {
+    key: "fonts",
+    get: function get() {
+      var font = [{
+        type: "google-font",
+        src: "https://fonts.googleapis.com/css2?family=".concat(fontFamilyHelper$1(this.attrs.fontFamily, this.attrs.fontWeight), "&display=swap")
+      }];
+      return font;
+    }
+  }, {
     key: "html",
     get: function get() {
+      this.speed = this.attrs.speed ? this.attrs.speed : 1;
       this.array = this.attrs.text.split("");
       this.textSize = this.attrs.width / this.array.length; //40 // window.innerWidth/(array.length + 2)
 
@@ -2467,6 +2493,7 @@ var SvgExplosion = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
 var SvgExplosion_1 = SvgExplosion;
 
 var Anime$2 = MotorCortex.loadPlugin(index);
+var fontFamilyHelper$2 = helpers.fontFamilyHelper;
 
 var SvgLines = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
   _inherits(SvgLines, _MotorCortex$HTMLClip);
@@ -2494,6 +2521,15 @@ var SvgLines = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
       this.addIncident(textSadow1, 0);
     }
   }, {
+    key: "fonts",
+    get: function get() {
+      var font = [{
+        type: "google-font",
+        src: "https://fonts.googleapis.com/css2?family=".concat(fontFamilyHelper$2(this.attrs.fontFamily, this.attrs.fontWeight), "&display=swap")
+      }];
+      return font;
+    }
+  }, {
     key: "html",
     get: function get() {
       this.speed = this.attrs.speed ? this.attrs.speed : 1;
@@ -2512,6 +2548,7 @@ var SvgLines = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
 var SvgLines_1 = SvgLines;
 
 var Anime$3 = MotorCortex.loadPlugin(index);
+var fontFamilyHelper$3 = helpers.fontFamilyHelper;
 
 var Shadow = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
   _inherits(Shadow, _MotorCortex$HTMLClip);
@@ -2677,6 +2714,15 @@ var Shadow = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
       }
     }
   }, {
+    key: "fonts",
+    get: function get() {
+      var font = [{
+        type: "google-font",
+        src: "https://fonts.googleapis.com/css2?family=".concat(fontFamilyHelper$3(this.attrs.fontFamily, this.attrs.fontWeight), "&display=swap")
+      }];
+      return font;
+    }
+  }, {
     key: "html",
     get: function get() {
       this.speed = this.attrs.speed ? this.attrs.speed : 1;
@@ -2760,6 +2806,17 @@ var FontWeight = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
         delay: "@stagger(0, 300)"
       });
       this.addIncident(fontWeight, 0);
+    }
+  }, {
+    key: "fonts",
+    get: function get() {
+      var wordlist = this.attrs.fontFamily.split(" ").join("+");
+      wordlist += ":wght@".concat(this.attrs.fontWeightList.join(";"));
+      var font = [{
+        type: "google-font",
+        src: "https://fonts.googleapis.com/css2?family=".concat(wordlist, "&display=swap")
+      }];
+      return font;
     }
   }, {
     key: "html",

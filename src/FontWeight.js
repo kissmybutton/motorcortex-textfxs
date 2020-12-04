@@ -3,6 +3,25 @@ const AnimeDefinition = require("@kissmybutton/motorcortex-anime");
 const Anime = MotorCortex.loadPlugin(AnimeDefinition);
 
 class FontWeight extends MotorCortex.HTMLClip {
+ 
+
+
+  get fonts(){
+    let wordlist=this.attrs.fontFamily.split(" ").join("+")
+    
+      wordlist+=`:wght@${this.attrs.fontWeightList.join(";")}`
+    
+
+    const font =[
+      {
+          type: `google-font`,
+          src: `https://fonts.googleapis.com/css2?family=${wordlist}&display=swap`
+        },
+    ]
+    return font
+  }
+
+
   get html() {
     const textList = [];
     for (let i = 1; i <= this.attrs.rows; i++) {

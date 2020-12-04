@@ -45,25 +45,25 @@ const clip = new MotorCortex.HTMLClip({
   css,
   html,
   host,
-  fonts: [
-    {
-      type: `google-font`,
-      src: `https://fonts.googleapis.com/css2?family=Pacifico&display=swap`
-    },
-    {
-      type: `google-font`,
-      src: `https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap`
-    },
-    {
-      type: `google-font`,
-      src: `https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap`
-    },
-    {
-      type: "google-font",
-      src:
-        "https://fonts.googleapis.com/css2?family=Commissioner:wght@100;200;300;400;500;600;700;800;900&display=swap"
-    }
-  ],
+  // fonts: [
+  //   {
+  //     type: `google-font`,
+  //     src: `https://fonts.googleapis.com/css2?family=Pacifico&display=swap`
+  //   },
+  //   // {
+  //   //   type: `google-font`,
+  //   //   src: `https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap`
+  //   // },
+  //   // {
+  //   //   type: `google-font`,
+  //   //   src: `https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap`
+  //   // },
+  //   {
+  //     type: "google-font",
+  //     src:
+  //       "https://fonts.googleapis.com/css2?family=Commissioner:wght@100;200;300;400;500;600;700;800;900&display=swap"
+  //   }
+  // ],
   containerParams,
   id: "root"
 });
@@ -84,7 +84,8 @@ const SvgExplosion = new Clip.SvgExplosion(
       "#70B984"
     ],
     fontFamily: "Rubik Mono One",
-    speed: 0.75
+    fontWeight:400,
+    speed: 5
   },
   {
     selector: ".container1"
@@ -135,7 +136,8 @@ const FontWeight = new Clip.FontWeight(
     rows: 10,
     fontSize: 20,
     fontFamily: "Commissioner",
-    repeats: 8
+    repeats: 8,
+    fontWeightList:[100,200,300,400,500,600,700,800,900]
   },
   {
     selector: ".container4"

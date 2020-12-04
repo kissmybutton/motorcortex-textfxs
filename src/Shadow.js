@@ -1,8 +1,21 @@
 const MotorCortex = require("@kissmybutton/motorcortex");
 const AnimeDefinition = require("@kissmybutton/motorcortex-anime");
 const Anime = MotorCortex.loadPlugin(AnimeDefinition);
-
+const { fontFamilyHelper } = require("./helpers");
 class Shadow extends MotorCortex.HTMLClip {
+
+  
+  get fonts(){
+    const font =[
+      {
+          type: `google-font`,
+          src: `https://fonts.googleapis.com/css2?family=${fontFamilyHelper(this.attrs.fontFamily,this.attrs.fontWeight)}&display=swap`
+        },
+    ]
+    return font
+  }
+  
+
   get html() {
     this.speed = this.attrs.speed ? this.attrs.speed : 1;
     return `

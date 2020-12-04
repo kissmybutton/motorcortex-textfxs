@@ -17,7 +17,7 @@ $ yarn add @kissmybutton/motorcortex-textfxs
 ```javascript
 const MotorCortex = require("@kissmybutton/motorcortex/");
 const textfx = require("@kissmybutton/motorcortex-textfxs");
-const Clip = MotorCortex.loadPlugin(textfx);
+const Plugin = MotorCortex.loadPlugin(textfx);
 ```
 
 # Create incident
@@ -25,7 +25,7 @@ const Clip = MotorCortex.loadPlugin(textfx);
 ## SvgLines
 
 ```javascript
-const SvgLines = new Clip.SvgLines(
+const SvgLines = new Plugin.SvgLines(
   {
     text: "SvgLines",
     width: 1728,
@@ -55,12 +55,12 @@ const SvgLines = new Clip.SvgLines(
 | speed |  animation speed. Defaults to 1  |  num, min:0 |
 | fontFamily |  font family  |  string |
 | fontSize |  size of the font  |  number |
-
+| fontWeight | the Weight of the font | number|
 
 ## SvgExplosion
 
 ```javascript
-const SvgExplosion = new Clip.SvgExplosion(
+const SvgExplosion = new Plugin.SvgExplosion(
   {
     text: "SvgExplosion",
     width: 1728,
@@ -95,12 +95,13 @@ const SvgExplosion = new Clip.SvgExplosion(
 | colors |  list of colors for leter |  hex values or RGB(A) or text ("blue", "red", etc)  |
 | fontFamily |  font family  |  string |
 | fontSize |  size of the font  |  number |
+| fontWeight | the Weight of the font | number|
 
 
 ## Shadow
 
 ```javascript
-const Shadow = new Clip.Shadow(
+const Shadow = new Plugin.Shadow(
   {
     text: "Shadow",
     width: 1728,
@@ -133,6 +134,7 @@ const Shadow = new Clip.Shadow(
 | fontFamily |  font family  |  string |
 | fontSize |  size of the font  |  number |
 | reverce |  reverse tha animation after finish  |  boolean |
+| fontWeight | the Weight of the font | number|
 
 ## Font 
 if like to change the font you need to include it in to root clip properties
