@@ -1,27 +1,30 @@
-const SvgExplosion = require("./SvgExplosion");
-const SvgLines = require("./SvgLines");
-const Shadow = require("./Shadow");
-const FontWeight = require("./FontWeight");
-const compositeAttributes = require("./compoAttributes");
-const attrs = require("./validation");
+import SvgExplosion from "./SvgExplosion"
+import SvgLines from "./SvgLines"
+import Shadow from "./Shadow"
+import FontWeight from "./FontWeight"
+import {ShadowValidation,SvgExplosionValidation,SvgLineValidation} from "./validation"
 
-module.exports = {
-  npm_name: "@kissmybutton/motorcortex-textfxs",
+
+const pkg = require("../package.json");
+
+export default {
+  npm_name: pkg.name,
+  version: pkg.version,
   incidents: [
     {
       exportable: SvgExplosion,
-      name: "SvgExplosion"
-      // attributesValidationRules: attrs.SvgExplosionValidation
+      name: "SvgExplosion",
+      attributesValidationRules: SvgExplosionValidation
     },
     {
       exportable: SvgLines,
-      name: "SvgLines"
-      // attributesValidationRules: attrs.SvgLineValidation
+      name: "SvgLines",
+      attributesValidationRules: SvgLineValidation
     },
     {
       exportable: Shadow,
-      name: "Shadow"
-      // attributesValidationRules: attrs.ShadowValidation
+      name: "Shadow",
+      attributesValidationRules: ShadowValidation
     },
     {
       exportable: FontWeight,
@@ -29,5 +32,4 @@ module.exports = {
       // attributesValidationRules: attrs.ShadowValidation
     }
   ],
-  compositeAttributes
 };
