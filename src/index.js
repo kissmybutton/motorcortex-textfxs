@@ -5,11 +5,11 @@ import FontWeight from "./FontWeight"
 import {ShadowValidation,SvgExplosionValidation,SvgLineValidation} from "./validation"
 
 
-const pkg = require("../package.json");
+import {name,version}  from '../package.json'
 
 export default {
-  npm_name: pkg.name,
-  version: pkg.version,
+  npm_name: name,
+  version: version,
   incidents: [
     {
       exportable: SvgExplosion,

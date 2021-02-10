@@ -2266,12 +2266,11 @@ var animatedAttrs = {
     min: 0
   }
 };
-
-var pkg = require('../package.json');
-
+var name = "@kissmybutton/motorcortex-anime";
+var version = "2.1.11";
 var index = {
-  npm_name: pkg.name,
-  version: pkg.version,
+  npm_name: name,
+  version: version,
   incidents: [{
     exportable: Anime,
     name: "Anime",
@@ -2962,11 +2961,12 @@ var ShadowValidation = {
   }
 };
 
-var pkg$1 = require("../package.json");
+var name$1 = "@kissmybutton/motorcortex-textfxs";
+var version$1 = "0.1.2";
 
 var index$1 = {
-  npm_name: pkg$1.name,
-  version: pkg$1.version,
+  npm_name: name$1,
+  version: version$1,
   incidents: [{
     exportable: SvgExplosion_1,
     name: "SvgExplosion",
