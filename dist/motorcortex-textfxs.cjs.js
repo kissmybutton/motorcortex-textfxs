@@ -2968,7 +2968,7 @@ var ShadowValidation = {
 };
 
 var name$1 = "@kissmybutton/motorcortex-textfxs";
-var version$1 = "0.1.2";
+var version$1 = "0.1.3";
 
 var index$1 = {
   npm_name: name$1,
