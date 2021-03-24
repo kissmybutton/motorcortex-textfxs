@@ -1,6 +1,6 @@
 {
   "name": "@kissmybutton/motorcortex-textfxs",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "textfxs plugin for MotorCortex",
   "main": "dist/motorcortex-textfxs.cjs.js",
   "module": "dist/motorcortex-textfxs.esm.js",
