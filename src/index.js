@@ -1,11 +1,15 @@
-import SvgExplosion from "./SvgExplosion"
-import SvgLines from "./SvgLines"
-import Shadow from "./Shadow"
-import FontWeight from "./FontWeight"
-import {ShadowValidation,SvgExplosionValidation,SvgLineValidation} from "./validation"
+import SvgExplosion from "./SvgExplosion";
+import SvgLines from "./SvgLines";
+import Shadow from "./Shadow/index.js";
+import FontWeight from "./FontWeight";
+import {
+  ShadowValidation,
+  SvgExplosionValidation,
+  SvgLineValidation,
+  FontWeightValidation
+} from "./validation";
 
-
-import {name,version}  from '../package.json'
+import { name, version } from "../package.json";
 
 export default {
   npm_name: name,
@@ -28,8 +32,8 @@ export default {
     },
     {
       exportable: FontWeight,
-      name: "FontWeight"
-      // attributesValidationRules: attrs.ShadowValidation
+      name: "FontWeight",
+      attributesValidationRules: FontWeightValidation
     }
-  ],
+  ]
 };

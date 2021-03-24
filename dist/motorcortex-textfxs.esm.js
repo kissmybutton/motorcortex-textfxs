@@ -1,5 +1,106 @@
 import MotorCortex from '@kissmybutton/motorcortex';
 
+function _classCallCheck$1(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _defineProperties$1(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass$1(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties$1(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties$1(Constructor, staticProps);
+  return Constructor;
+}
+
+function _inherits$1(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) _setPrototypeOf$1(subClass, superClass);
+}
+
+function _getPrototypeOf$1(o) {
+  _getPrototypeOf$1 = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf$1(o);
+}
+
+function _setPrototypeOf$1(o, p) {
+  _setPrototypeOf$1 = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf$1(o, p);
+}
+
+function _isNativeReflectConstruct$1() {
+  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
+  if (Reflect.construct.sham) return false;
+  if (typeof Proxy === "function") return true;
+
+  try {
+    Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+function _assertThisInitialized$1(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+function _possibleConstructorReturn$1(self, call) {
+  if (call && (typeof call === "object" || typeof call === "function")) {
+    return call;
+  }
+
+  return _assertThisInitialized$1(self);
+}
+
+function _createSuper$1(Derived) {
+  var hasNativeReflectConstruct = _isNativeReflectConstruct$1();
+
+  return function _createSuperInternal() {
+    var Super = _getPrototypeOf$1(Derived),
+        result;
+
+    if (hasNativeReflectConstruct) {
+      var NewTarget = _getPrototypeOf$1(this).constructor;
+
+      result = Reflect.construct(Super, arguments, NewTarget);
+    } else {
+      result = Super.apply(this, arguments);
+    }
+
+    return _possibleConstructorReturn$1(this, result);
+  };
+}
+
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
@@ -20,6 +121,55 @@ function _createClass(Constructor, protoProps, staticProps) {
   if (protoProps) _defineProperties(Constructor.prototype, protoProps);
   if (staticProps) _defineProperties(Constructor, staticProps);
   return Constructor;
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly) symbols = symbols.filter(function (sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    });
+    keys.push.apply(keys, symbols);
+  }
+
+  return keys;
+}
+
+function _objectSpread2(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+
+    if (i % 2) {
+      ownKeys(Object(source), true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(Object(source)).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
+    }
+  }
+
+  return target;
 }
 
 function _inherits(subClass, superClass) {
@@ -83,13 +233,11 @@ function _possibleConstructorReturn(self, call) {
 }
 
 function _createSuper(Derived) {
-  var hasNativeReflectConstruct = _isNativeReflectConstruct();
-
-  return function _createSuperInternal() {
+  return function () {
     var Super = _getPrototypeOf(Derived),
         result;
 
-    if (hasNativeReflectConstruct) {
+    if (_isNativeReflectConstruct()) {
       var NewTarget = _getPrototypeOf(this).constructor;
 
       result = Reflect.construct(Super, arguments, NewTarget);
@@ -98,154 +246,6 @@ function _createSuper(Derived) {
     }
 
     return _possibleConstructorReturn(this, result);
-  };
-}
-
-function _classCallCheck$1(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-
-function _defineProperties$1(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass$1(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties$1(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties$1(Constructor, staticProps);
-  return Constructor;
-}
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
-function ownKeys(object, enumerableOnly) {
-  var keys = Object.keys(object);
-
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    if (enumerableOnly) symbols = symbols.filter(function (sym) {
-      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-    });
-    keys.push.apply(keys, symbols);
-  }
-
-  return keys;
-}
-
-function _objectSpread2(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-
-    if (i % 2) {
-      ownKeys(Object(source), true).forEach(function (key) {
-        _defineProperty(target, key, source[key]);
-      });
-    } else if (Object.getOwnPropertyDescriptors) {
-      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-    } else {
-      ownKeys(Object(source)).forEach(function (key) {
-        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-      });
-    }
-  }
-
-  return target;
-}
-
-function _inherits$1(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
-  }
-
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      writable: true,
-      configurable: true
-    }
-  });
-  if (superClass) _setPrototypeOf$1(subClass, superClass);
-}
-
-function _getPrototypeOf$1(o) {
-  _getPrototypeOf$1 = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  };
-  return _getPrototypeOf$1(o);
-}
-
-function _setPrototypeOf$1(o, p) {
-  _setPrototypeOf$1 = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  };
-
-  return _setPrototypeOf$1(o, p);
-}
-
-function _isNativeReflectConstruct$1() {
-  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
-  if (Reflect.construct.sham) return false;
-  if (typeof Proxy === "function") return true;
-
-  try {
-    Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
-
-function _assertThisInitialized$1(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return self;
-}
-
-function _possibleConstructorReturn$1(self, call) {
-  if (call && (typeof call === "object" || typeof call === "function")) {
-    return call;
-  }
-
-  return _assertThisInitialized$1(self);
-}
-
-function _createSuper$1(Derived) {
-  return function () {
-    var Super = _getPrototypeOf$1(Derived),
-        result;
-
-    if (_isNativeReflectConstruct$1()) {
-      var NewTarget = _getPrototypeOf$1(this).constructor;
-
-      result = Reflect.construct(Super, arguments, NewTarget);
-    } else {
-      result = Super.apply(this, arguments);
-    }
-
-    return _possibleConstructorReturn$1(this, result);
   };
 }
 /*
@@ -933,7 +933,7 @@ function anime(params) {
   }
 
   var instance = createNewInstance(params);
-  var promise = makePromise(instance);
+  makePromise(instance);
 
   function seekChild(time, child) {
     if (child) {
@@ -1002,7 +1002,7 @@ function anime(params) {
         progress = strings[0];
 
         for (var s = 0; s < stringsLength; s++) {
-          var a = strings[s];
+          strings[s];
           var b = strings[s + 1];
           var n$1 = numbers[s];
 
@@ -1047,7 +1047,7 @@ function anime(params) {
 
         if (!instance.passThrough && 'Promise' in window) {
           resolve();
-          promise = makePromise(instance);
+          makePromise(instance);
         }
       }
     }
@@ -1277,18 +1277,18 @@ function getMatrix2D(win, element) {
   return qrDecompone(values);
 }
 
-var Anime = /*#__PURE__*/function (_MotorCortex$Effect) {
-  _inherits$1(Anime, _MotorCortex$Effect);
+var Anime$4 = /*#__PURE__*/function (_MotorCortex$Effect) {
+  _inherits(Anime, _MotorCortex$Effect);
 
-  var _super = _createSuper$1(Anime);
+  var _super = _createSuper(Anime);
 
   function Anime() {
-    _classCallCheck$1(this, Anime);
+    _classCallCheck(this, Anime);
 
     return _super.apply(this, arguments);
   }
 
-  _createClass$1(Anime, [{
+  _createClass(Anime, [{
     key: "onGetContext",
     value: function onGetContext() {
       var options = {};
@@ -1362,17 +1362,17 @@ var Anime = /*#__PURE__*/function (_MotorCortex$Effect) {
 
 
 var MotionPath = /*#__PURE__*/function (_MotorCortex$Effect) {
-  _inherits$1(MotionPath, _MotorCortex$Effect);
+  _inherits(MotionPath, _MotorCortex$Effect);
 
-  var _super = _createSuper$1(MotionPath);
+  var _super = _createSuper(MotionPath);
 
   function MotionPath() {
-    _classCallCheck$1(this, MotionPath);
+    _classCallCheck(this, MotionPath);
 
     return _super.apply(this, arguments);
   }
 
-  _createClass$1(MotionPath, [{
+  _createClass(MotionPath, [{
     key: "onGetContext",
     value: function onGetContext() {
       this.pixelsAccuracy = this.attrs.pixelsAccuracy || 4;
@@ -2266,13 +2266,13 @@ var animatedAttrs = {
     min: 0
   }
 };
-var name = "@kissmybutton/motorcortex-anime";
-var version = "2.1.11";
-var index = {
-  npm_name: name,
-  version: version,
+var name$1 = "@kissmybutton/motorcortex-anime";
+var version$1 = "2.1.12";
+var index$1 = {
+  npm_name: name$1,
+  version: version$1,
   incidents: [{
-    exportable: Anime,
+    exportable: Anime$4,
     name: "Anime",
     attributesValidationRules: {
       animatedAttrs: animatedAttrs
@@ -2299,44 +2299,75 @@ var index = {
   compositeAttributes: compositeAttributes
 };
 
-var fontFamilyHelper = function fontFamilyHelper(fontFamily, fontWeight) {
-  var wordlist = fontFamily.split(" ").join("+");
+var Anime$3 = MotorCortex.loadPlugin(index$1);
 
-  if (fontWeight) {
-    wordlist += ":wght@".concat(fontWeight);
-  }
-
-  return wordlist;
-};
-
-var helpers = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  fontFamilyHelper: fontFamilyHelper
-});
-
-var fontFamilyHelper$1 = helpers.fontFamilyHelper;
-var Anime$1 = MotorCortex.loadPlugin(index);
+var _require$2 = require("./helpers"),
+    fontFamilyHelper$2 = _require$2.fontFamilyHelper;
 
 var SvgExplosion = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
-  _inherits(SvgExplosion, _MotorCortex$HTMLClip);
+  _inherits$1(SvgExplosion, _MotorCortex$HTMLClip);
 
-  var _super = _createSuper(SvgExplosion);
+  var _super = _createSuper$1(SvgExplosion);
 
   function SvgExplosion() {
-    _classCallCheck(this, SvgExplosion);
+    _classCallCheck$1(this, SvgExplosion);
 
     return _super.apply(this, arguments);
   }
 
-  _createClass(SvgExplosion, [{
+  _createClass$1(SvgExplosion, [{
+    key: "fonts",
+    get: function get() {
+      var family = fontFamilyHelper$2(this.attrs.fontFamily, this.attrs.fontWeight);
+      var font = [{
+        type: "google-font",
+        src: "https://fonts.googleapis.com/css2?family=".concat(family, "&display=swap")
+      }];
+      return font;
+    }
+  }, {
+    key: "html",
+    get: function get() {
+      var _this$attrs = this.attrs,
+          text = _this$attrs.text,
+          colors = _this$attrs.colors,
+          width = _this$attrs.width;
+      this.textSize = width / text.length;
+      var allCharElements = "";
+      var polygons = "";
+      var circles = "";
+
+      for (var i = 0; i < text.length; i++) {
+        var style = "color : ".concat(colors[i % colors.length], ";");
+        var singleChar = text.slice(i, i + 1);
+        var singleCharElement = "<span \n          id=\"text\"\n          style=\"".concat(style, "\"\n          class=\"letter letter-").concat(i, "\"\n        >\n            ").concat(singleChar, "\n        </span>");
+        allCharElements += singleCharElement;
+
+        for (var j = 0; j < 8; j++) {
+          var point1 = this.textSize * 0.1 * 2;
+          var point2 = this.textSize * 0.1;
+          var point3 = this.textSize * 0.1 * 2;
+          polygons += "\n          <polygon \n            class=\"poligon-".concat(i, "-").concat(j, " poligon\"\n            points=\"0,0 ").concat(point1, ",0 ").concat(point2, ",").concat(point3, "\"\n            style=\"fill: ").concat(colors[i % colors.length], ";\"\n          ></polygon>");
+          circles += "\n          <circle \n            r=\"".concat(this.textSize * 0.052, "\"\n            class=\"circ circ-").concat(i, "-").concat(j, "\"\n            style=\"fill:rgb(238, 238, 238);\"\n          ></circle>");
+        }
+      }
+
+      var html = "\n      <div class=\"wrapper\">\n        <div class=\"container\">\n          <p \n            id=\"text\"\n            style=\"font-size:".concat(this.textSize, "px\"\n            class=\"text\"\n          >").concat(allCharElements, "</p>\n          <svg id=\"svg\">\n          ").concat(polygons, "\n          ").concat(circles, "\n          </svg>\n        </div>\n      </div>\n      ");
+      return html;
+    }
+  }, {
+    key: "css",
+    get: function get() {
+      return "\n      svg {\n        width: 100%;\n        position: absolute;\n        top: 0px;\n        left: 0px;\n        z-index: 0;\n        top: 50%;\n        transform: translateY(-50%);\n        overflow: overlay;\n      }\n      \n      .text, .offscreen-text {\n        width: 100%;\n        top: 50%;\n        transform: translateY(-50%);\n        display: block;\n        margin: 0;\n        text-align: center;\n        font-family: ".concat(this.attrs.fontFamily, "\n      }\n      \n      .offscreen-text {\n        text-align: center;\n        top: -9999px;\n      }\n      \n      .letter{\n        display:inline-block;\n        font-weight: 800;\n      }\n\n      .poligon{\n        opacity:0\n      }\n\n      .container{\n        width: ").concat(this.attrs.width, "px;\n        height: ").concat(this.attrs.height, "px;\n        overflow: hidden;\n        background: ").concat(this.attrs.background, ";\n        display: flex;\n        align-content: center;\n        align-items: center;\n        position: relative;\n      }\n\n      .wrapper{\n        width: 100%;\n        height: 100%;\n        display: flex;\n        align-content: center;\n        justify-content: center;\n        align-items: center;\n      }\n  ");
+    }
+  }, {
     key: "buildTree",
     value: function buildTree() {
-      var waitTIme = 0;
-      var polyPosition = this.textSize * this.array.length / 2;
+      var polyPosition = this.textSize * this.attrs.text.length / 2;
 
-      for (var i = 0; i < this.array.length; i++) {
+      for (var i = 0; i < this.attrs.text.length; i++) {
         var rotation = -50 + Math.random() * 100;
-        var textAnimation = new Anime$1.Anime({
+        var textAnimation = new Anime$3.Anime({
           animatedAttrs: {
             width: "".concat(this.textSize, "px"),
             opacity: 1,
@@ -2355,11 +2386,12 @@ var SvgExplosion = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
             }
           }
         }, {
-          duration: 200 * this.attrs.speed,
+          duration: 200,
           selector: ".letter-" + i,
           easing: "easeOutExpo"
         });
         var polyMcGrou = new MotorCortex.Group();
+        var waitTIme = 0;
 
         for (var j = 0; j < 8; j++) {
           var a = Math.random();
@@ -2374,7 +2406,7 @@ var SvgExplosion = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
           var scale = 0.3 + Math.random() * 0.7;
           var offset = triSize * scale;
           var circSize = this.textSize * 0.05 * Math.random();
-          var polyAnimationOp = new Anime$1.Anime({
+          var polyAnimationOp = new Anime$3.Anime({
             animatedAttrs: {
               opacity: 1
             },
@@ -2386,7 +2418,7 @@ var SvgExplosion = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
             selector: ".poligon-".concat(i, "-").concat(j, ",.circ-").concat(i, "-").concat(j),
             easing: "easeOutExpo"
           });
-          var circAnimation = new Anime$1.Anime({
+          var circAnimation = new Anime$3.Anime({
             animatedAttrs: {
               transform: {
                 rotate: Math.random() * 360 + "deg",
@@ -2405,11 +2437,11 @@ var SvgExplosion = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
               opacity: 1
             }
           }, {
-            duration: 600 * this.attrs.speed,
+            duration: 600,
             selector: ".circ-".concat(i, "-").concat(j),
             easing: "easeOutQuint"
           });
-          var polyAnimation = new Anime$1.Anime({
+          var polyAnimation = new Anime$3.Anime({
             animatedAttrs: {
               transform: {
                 rotate: Math.random() * 360 + "deg",
@@ -2428,7 +2460,7 @@ var SvgExplosion = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
               opacity: 1
             }
           }, {
-            duration: 600 * this.attrs.speed,
+            duration: 600,
             selector: ".poligon-".concat(i, "-").concat(j),
             easing: "easeOutQuint"
           });
@@ -2438,7 +2470,7 @@ var SvgExplosion = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
         }
 
         polyPosition += this.textSize / 2;
-        var textAnimation2 = new Anime$1.Anime({
+        var textAnimation2 = new Anime$3.Anime({
           animatedAttrs: {
             transform: {
               translateY: "50%",
@@ -2452,17 +2484,38 @@ var SvgExplosion = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
             }
           }
         }, {
-          duration: 200 * this.attrs.speed,
+          duration: 200,
           selector: ".letter-" + i,
           easing: "easeOutExpo"
         });
-        this.addIncident(textAnimation, (200 * (i + 1) + waitTIme) * this.attrs.speed);
-        this.addIncident(polyMcGrou, (200 * (i + 1) + waitTIme) * this.attrs.speed);
-        this.addIncident(textAnimation2, (200 + 200 * (i + 1) + waitTIme) * this.attrs.speed);
+        this.addIncident(textAnimation, 200 * (i + 1) + waitTIme);
+        this.addIncident(polyMcGrou, 200 * (i + 1) + waitTIme);
+        this.addIncident(textAnimation2, 200 + 200 * (i + 1) + waitTIme);
         waitTIme = 200 * (i + 1);
       }
     }
-  }, {
+  }]);
+
+  return SvgExplosion;
+}(MotorCortex.HTMLClip);
+
+var Anime$2 = MotorCortex.loadPlugin(index$1);
+
+var _require$1 = require("./helpers"),
+    fontFamilyHelper$1 = _require$1.fontFamilyHelper;
+
+var SvgLines = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
+  _inherits$1(SvgLines, _MotorCortex$HTMLClip);
+
+  var _super = _createSuper$1(SvgLines);
+
+  function SvgLines() {
+    _classCallCheck$1(this, SvgLines);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass$1(SvgLines, [{
     key: "fonts",
     get: function get() {
       var font = [{
@@ -2474,275 +2527,187 @@ var SvgExplosion = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
   }, {
     key: "html",
     get: function get() {
-      this.speed = this.attrs.speed ? this.attrs.speed : 1;
-      this.array = this.attrs.text.split("");
-      this.textSize = this.attrs.width / this.array.length; //40 // window.innerWidth/(array.length + 2)
-
-      var html3 = "";
-      var poly = "";
-      var circ = "";
-
-      for (var i = 0; i < this.array.length; i++) {
-        var _html = "<span id=\"text\" style=\"color : ".concat(this.attrs.colors[i % this.attrs.colors.length], ";\" class='letter letter-").concat(i, "'>").concat(this.array[i], "</span>");
-
-        html3 += _html;
-
-        for (var j = 0; j < 8; j++) {
-          poly += "<polygon class=\"poligon-".concat(i, "-").concat(j, " poligon\" points=\"0,0 ").concat(this.textSize * 0.1 * 2, ",0 ").concat(this.textSize * 0.1, ",").concat(this.textSize * 0.1 * 2, "\" style=\"fill: ").concat(this.attrs.colors[i % this.attrs.colors.length], ";\"></polygon>");
-          circ += "<circle r=\"".concat(this.textSize * 0.052, "\" class=\"circ-").concat(i, "-").concat(j, " circ\" style=\"fill: rgb(238, 238, 238);\"></circle>");
-        }
-      }
-
-      var html = "\n      <div class=\"wrapper\">\n        <div class=\"container\">\n          <p id=\"text\" style=\"font-size:".concat(this.textSize, "px\" class=\"text\">").concat(html3, "</p>\n    \n          <svg id=\"svg\">\n          ").concat(poly, "\n          ").concat(circ, "\n          </svg>\n        </div>\n      </div>\n      ");
-      return html;
+      var y = this.attrs.verticalAlign || "50%";
+      return "\n        <div class=\"container\">\n          <svg>\n            <symbol id=\"s-text\">\n              <text text-anchor=\"middle\" x=\"50%\" y=\"".concat(y, "\" class=\"text--line\">").concat(this.attrs.text, "</text>\n            </symbol>\n            <g class=\"g-ants\">\n              <use xlink:href=\"#s-text\" class=\"text-copy\"></use>\n              <use xlink:href=\"#s-text\" class=\"text-copy\"></use>\n              <use xlink:href=\"#s-text\" class=\"text-copy\"></use>\n              <use xlink:href=\"#s-text\" class=\"text-copy\"></use>\n              <use xlink:href=\"#s-text\" class=\"text-copy\"></use>\n            </g>\n          </svg> \n        </div>\n    ");
     }
   }, {
     key: "css",
     get: function get() {
-      return "\n    svg {\n      width: 100%;\n      position: absolute;\n      top: 0px;\n      left: 0px;\n      z-index: 0;\n      top: 50%;\n        transform: translateY(-50%);\n        overflow: overlay;\n    }\n    \n    .text, .offscreen-text {\n      width: 100%;\n      top: 50%;\n      transform: translateY(-50%);\n      display: block;\n      margin: 0;\n      text-align: center;\n      font-family: ".concat(this.attrs.fontFamily, "\n    }\n    \n    .offscreen-text {\n      text-align: center;\n      top: -9999px;\n    }\n    \n    \n    .letter{\n      display:inline-block;\n      font-weight: 800;\n    }\n    .poligon{\n      opacity:0\n    }\n    .container{\n      width: ").concat(this.attrs.width, "px;\n      height: ").concat(this.attrs.height, "px;\n      overflow: hidden;\n      background: ").concat(this.attrs.background, ";\n      display: flex;\n      align-content: center;\n      align-items: center;\n      position: relative;\n    }\n    .wrapper{\n      width: 100%;\n      height: 100%;\n      display: flex;\n      align-content: center;\n      justify-content: center;\n      align-items: center;\n    }\n  ");
+      return "\n    .container{\n      width: ".concat(this.attrs.width, "px;\n      height: ").concat(this.attrs.height, "px;\n      overflow: hidden;\n      background: ").concat(this.attrs.background, ";\n      display: flex;\n      align-content: center;\n      align-items: center;\n      position: relative;\n    }\n    .g-ants{\n      position: relative;\n    }\n    .text--line {\n      font-size: ").concat(this.attrs.fontSize, "px;\n      font-family: ").concat(this.attrs.fontFamily, "\n    }\n    svg {\n      width: 100%;\n      height: 100%;\n    }\n    .text-copy {\n      fill: none;\n      stroke: white;\n      stroke-dasharray: 100% 28%;\n      stroke-width: ").concat(this.attrs.strokeWidth, "px;\n    }\n    .text-copy:nth-child(1) {\n      stroke: ").concat(this.attrs.colors[0], ";\n      stroke-dashoffset: 7%;\n    }\n    .text-copy:nth-child(2) {\n      stroke: ").concat(this.attrs.colors[1], ";\n      stroke-dashoffset: 14%;\n    }\n    .text-copy:nth-child(3) {\n      stroke: ").concat(this.attrs.colors[2], ";\n      stroke-dashoffset: 21%;\n    }\n    .text-copy:nth-child(4) {\n      stroke: ").concat(this.attrs.colors[3], ";\n      stroke-dashoffset: 28%;\n    }\n    .text-copy:nth-child(5) {\n      stroke: ").concat(this.attrs.colors[4], ";\n      stroke-dashoffset: 35%;\n    }\n  ");
     }
-  }]);
-
-  return SvgExplosion;
-}(MotorCortex.HTMLClip);
-
-var SvgExplosion_1 = SvgExplosion;
-
-var Anime$2 = MotorCortex.loadPlugin(index);
-var fontFamilyHelper$2 = helpers.fontFamilyHelper;
-
-var SvgLines = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
-  _inherits(SvgLines, _MotorCortex$HTMLClip);
-
-  var _super = _createSuper(SvgLines);
-
-  function SvgLines() {
-    _classCallCheck(this, SvgLines);
-
-    return _super.apply(this, arguments);
-  }
-
-  _createClass(SvgLines, [{
+  }, {
     key: "buildTree",
     value: function buildTree() {
-      var textSadow1 = new Anime$2.Anime({
+      var svgline = new Anime$2.Anime({
         animatedAttrs: {
           strokeDashoffset: "35%",
           strokeDasharray: " 0 87.5%"
         }
       }, {
-        duration: 2000 * this.speed,
+        duration: 4000,
         selector: ".text-copy"
       });
-      this.addIncident(textSadow1, 0);
-    }
-  }, {
-    key: "fonts",
-    get: function get() {
-      var font = [{
-        type: "google-font",
-        src: "https://fonts.googleapis.com/css2?family=".concat(fontFamilyHelper$2(this.attrs.fontFamily, this.attrs.fontWeight), "&display=swap")
-      }];
-      return font;
-    }
-  }, {
-    key: "html",
-    get: function get() {
-      this.speed = this.attrs.speed ? this.attrs.speed : 1;
-      return "\n    <div class=\"wrapper\">\n    <div class=\"container\">\n    <svg viewBox=\"0 0 ".concat(this.attrs.width, " ").concat(this.attrs.height, "\">\n  <symbol id=\"s-text\">\n\n    <text text-anchor=\"middle\" x=\"50%\" y=\"68%\" class=\"text--line\">").concat(this.attrs.text, "</text>\n  </symbol>\n  <g class=\"g-ants\">\n    <use xlink:href=\"#s-text\" class=\"text-copy\"></use>\n    <use xlink:href=\"#s-text\" class=\"text-copy\"></use>\n    <use xlink:href=\"#s-text\" class=\"text-copy\"></use>\n    <use xlink:href=\"#s-text\" class=\"text-copy\"></use>\n    <use xlink:href=\"#s-text\" class=\"text-copy\"></use>\n  </g>\n</svg> \n</div>\n</div>\n    ");
-    }
-  }, {
-    key: "css",
-    get: function get() {
-      return "\n    .container{\n      width: ".concat(this.attrs.width, "px;\n      height: ").concat(this.attrs.height, "px;\n      overflow: hidden;\n      background: ").concat(this.attrs.background, ";\n      display: flex;\n      align-content: center;\n      align-items: center;\n      position: relative;\n    }\n    .wrapper{\n      width: 100%;\n      height: 100%;\n      display: flex;\n      align-content: center;\n      justify-content: center;\n      align-items: center;\n    }\n    .g-ants{\n      position: relative;\n    }\n    \n    .text--line {\n      font-size: ").concat(this.attrs.fontSize, "px;\n      font-family: ").concat(this.attrs.fontFamily, "\n    }\n    \n    svg {\n     \n      width: 100%;\n      height: 100%;\n    }\n    \n    .text-copy {\n      fill: none;\n      stroke: white;\n      stroke-dasharray: 100% 28%;\n      stroke-width: ").concat(this.attrs.strokeWidth, "px;\n    }\n    .text-copy:nth-child(1) {\n      stroke: ").concat(this.attrs.colors[0], ";\n      stroke-dashoffset: 7%;\n    }\n    .text-copy:nth-child(2) {\n      stroke: ").concat(this.attrs.colors[1], ";\n      stroke-dashoffset: 14%;\n    }\n    .text-copy:nth-child(3) {\n      stroke: ").concat(this.attrs.colors[2], ";\n      stroke-dashoffset: 21%;\n    }\n    .text-copy:nth-child(4) {\n      stroke: ").concat(this.attrs.colors[3], ";\n      stroke-dashoffset: 28%;\n    }\n    .text-copy:nth-child(5) {\n      stroke: ").concat(this.attrs.colors[4], ";\n      stroke-dashoffset: 35%;\n    }\n  ");
+      this.addIncident(svgline, 0);
     }
   }]);
 
   return SvgLines;
 }(MotorCortex.HTMLClip);
 
-var SvgLines_1 = SvgLines;
+var loadIncidents = (function (Anime, colorsRGB, duration) {
+  return [new Anime.Anime({
+    animatedAttrs: {
+      textShadow: " 5px 5px 0px rgba(".concat(colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(colorsRGB[1], ", 0), \n          15px 15px 0px rgba(").concat(colorsRGB[2], ", 0), \n          20px 20px 0px rgba(").concat(colorsRGB[3], ", 0), \n          25px 25px 0px rgba(").concat(colorsRGB[4], ", 0), \n          30px 30px 0px rgba(").concat(colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(colorsRGB[5], ", 0)")
+    },
+    initialValues: {
+      textShadow: "5px 5px 0px rgba(".concat(colorsRGB[0], ",0), \n          10px 10px 0px rgba(").concat(colorsRGB[1], ", 0), \n          15px 15px 0px rgba(").concat(colorsRGB[2], ", 0), \n          20px 20px 0px rgba(").concat(colorsRGB[3], ", 0), \n          25px 25px 0px rgba(").concat(colorsRGB[4], ", 0), \n          30px 30px 0px rgba(").concat(colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(colorsRGB[5], ", 0)")
+    }
+  }, {
+    duration: duration,
+    selector: ".text"
+  }), new Anime.Anime({
+    animatedAttrs: {
+      textShadow: " 5px 5px 0px rgba(".concat(colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(colorsRGB[1], ", 1), \n          15px 15px 0px rgba(").concat(colorsRGB[2], ", 0), \n          20px 20px 0px rgba(").concat(colorsRGB[3], ", 0), \n          25px 25px 0px rgba(").concat(colorsRGB[4], ", 0), \n          30px 30px 0px rgba(").concat(colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(colorsRGB[5], ", 0)")
+    },
+    initialValues: {
+      textShadow: "5px 5px 0px rgba(".concat(colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(colorsRGB[1], ", 0), \n          15px 15px 0px rgba(").concat(colorsRGB[2], ", 0), \n          20px 20px 0px rgba(").concat(colorsRGB[3], ", 0), \n          25px 25px 0px rgba(").concat(colorsRGB[4], ", 0), \n          30px 30px 0px rgba(").concat(colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(colorsRGB[5], ", 0)")
+    }
+  }, {
+    duration: duration,
+    selector: ".text"
+  }), new Anime.Anime({
+    animatedAttrs: {
+      textShadow: " 5px 5px 0px rgba(".concat(colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(colorsRGB[1], ", 1), \n          15px 15px 0px rgba(").concat(colorsRGB[2], ", 1), \n          20px 20px 0px rgba(").concat(colorsRGB[3], ", 0), \n          25px 25px 0px rgba(").concat(colorsRGB[4], ", 0), \n          30px 30px 0px rgba(").concat(colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(colorsRGB[5], ", 0)")
+    },
+    initialValues: {
+      textShadow: "5px 5px 0px rgba(".concat(colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(colorsRGB[1], ", 1), \n          15px 15px 0px rgba(").concat(colorsRGB[2], ", 0), \n          20px 20px 0px rgba(").concat(colorsRGB[3], ", 0), \n          25px 25px 0px rgba(").concat(colorsRGB[4], ", 0), \n          30px 30px 0px rgba(").concat(colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(colorsRGB[5], ", 0)")
+    }
+  }, {
+    duration: duration,
+    selector: ".text"
+  }), new Anime.Anime({
+    animatedAttrs: {
+      textShadow: " 5px 5px 0px rgba(".concat(colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(colorsRGB[1], ", 1), \n          15px 15px 0px rgba(").concat(colorsRGB[2], ", 1), \n          20px 20px 0px rgba(").concat(colorsRGB[3], ", 1), \n          25px 25px 0px rgba(").concat(colorsRGB[4], ", 0), \n          30px 30px 0px rgba(").concat(colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(colorsRGB[5], ", 0)")
+    },
+    initialValues: {
+      textShadow: "5px 5px 0px rgba(".concat(colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(colorsRGB[1], ", 1), \n          15px 15px 0px rgba(").concat(colorsRGB[2], ", 1), \n          20px 20px 0px rgba(").concat(colorsRGB[3], ", 0), \n          25px 25px 0px rgba(").concat(colorsRGB[4], ", 0), \n          30px 30px 0px rgba(").concat(colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(colorsRGB[5], ", 0)")
+    }
+  }, {
+    duration: duration,
+    selector: ".text"
+  }), new Anime.Anime({
+    animatedAttrs: {
+      textShadow: " 5px 5px 0px rgba(".concat(colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(colorsRGB[1], ", 1), \n          15px 15px 0px rgba(").concat(colorsRGB[2], ", 1), \n          20px 20px 0px rgba(").concat(colorsRGB[3], ", 1), \n          25px 25px 0px rgba(").concat(colorsRGB[4], ", 1), \n          30px 30px 0px rgba(").concat(colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(colorsRGB[5], ", 0)")
+    },
+    initialValues: {
+      textShadow: "5px 5px 0px rgba(".concat(colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(colorsRGB[1], ", 1), \n          15px 15px 0px rgba(").concat(colorsRGB[2], ", 1), \n          20px 20px 0px rgba(").concat(colorsRGB[3], ", 1), \n          25px 25px 0px rgba(").concat(colorsRGB[4], ", 0), \n          30px 30px 0px rgba(").concat(colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(colorsRGB[5], ", 0)")
+    }
+  }, {
+    duration: duration,
+    selector: ".text"
+  }), new Anime.Anime({
+    animatedAttrs: {
+      textShadow: " 5px 5px 0px rgba(".concat(colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(colorsRGB[1], ", 1), \n          15px 15px 0px rgba(").concat(colorsRGB[2], ", 1), \n          20px 20px 0px rgba(").concat(colorsRGB[3], ", 1), \n          25px 25px 0px rgba(").concat(colorsRGB[4], ", 1), \n          30px 30px 0px rgba(").concat(colorsRGB[5], ", 1), \n          35px 35px 0px rgba(").concat(colorsRGB[5], ", 1), \n          40px 40px 0px rgba(").concat(colorsRGB[5], ", 1), \n          45px 45px 0px rgba(").concat(colorsRGB[5], ", 1)")
+    },
+    initialValues: {
+      textShadow: "5px 5px 0px rgba(".concat(colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(colorsRGB[1], ", 1), \n          15px 15px 0px rgba(").concat(colorsRGB[2], ", 1), \n          20px 20px 0px rgba(").concat(colorsRGB[3], ", 1), \n          25px 25px 0px rgba(").concat(colorsRGB[4], ", 1), \n          30px 30px 0px rgba(").concat(colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(colorsRGB[5], ", 0)")
+    }
+  }, {
+    duration: duration,
+    selector: ".text"
+  }), ///REVERSE
+  new Anime.Anime({
+    animatedAttrs: {
+      textShadow: "5px 5px 0px rgba(".concat(colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(colorsRGB[1], ", 1), \n          15px 15px 0px rgba(").concat(colorsRGB[2], ", 1), \n          20px 20px 0px rgba(").concat(colorsRGB[3], ", 1), \n          25px 25px 0px rgba(").concat(colorsRGB[4], ", 1), \n          30px 30px 0px rgba(").concat(colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(colorsRGB[5], ", 0)")
+    },
+    initialValues: {
+      textShadow: " 5px 5px 0px rgba(".concat(colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(colorsRGB[1], ", 1), \n          15px 15px 0px rgba(").concat(colorsRGB[2], ", 1), \n          20px 20px 0px rgba(").concat(colorsRGB[3], ", 1), \n          25px 25px 0px rgba(").concat(colorsRGB[4], ", 1), \n          30px 30px 0px rgba(").concat(colorsRGB[5], ", 1), \n          35px 35px 0px rgba(").concat(colorsRGB[5], ", 1), \n          40px 40px 0px rgba(").concat(colorsRGB[5], ", 1), \n          45px 45px 0px rgba(").concat(colorsRGB[5], ", 1)")
+    }
+  }, {
+    duration: duration,
+    selector: ".text"
+  }), new Anime.Anime({
+    animatedAttrs: {
+      textShadow: "5px 5px 0px rgba(".concat(colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(colorsRGB[1], ", 1), \n          15px 15px 0px rgba(").concat(colorsRGB[2], ", 1), \n          20px 20px 0px rgba(").concat(colorsRGB[3], ", 1), \n          25px 25px 0px rgba(").concat(colorsRGB[4], ", 0), \n          30px 30px 0px rgba(").concat(colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(colorsRGB[5], ", 0)")
+    },
+    initialValues: {
+      textShadow: " 5px 5px 0px rgba(".concat(colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(colorsRGB[1], ", 1), \n          15px 15px 0px rgba(").concat(colorsRGB[2], ", 1), \n          20px 20px 0px rgba(").concat(colorsRGB[3], ", 1), \n          25px 25px 0px rgba(").concat(colorsRGB[4], ", 1), \n          30px 30px 0px rgba(").concat(colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(colorsRGB[5], ", 0)")
+    }
+  }, {
+    duration: duration,
+    selector: ".text"
+  }), new Anime.Anime({
+    animatedAttrs: {
+      textShadow: "5px 5px 0px rgba(".concat(colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(colorsRGB[1], ", 1), \n          15px 15px 0px rgba(").concat(colorsRGB[2], ", 1), \n          20px 20px 0px rgba(").concat(colorsRGB[3], ", 0), \n          25px 25px 0px rgba(").concat(colorsRGB[4], ", 0), \n          30px 30px 0px rgba(").concat(colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(colorsRGB[5], ", 0)")
+    },
+    initialValues: {
+      textShadow: " 5px 5px 0px rgba(".concat(colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(colorsRGB[1], ", 1), \n          15px 15px 0px rgba(").concat(colorsRGB[2], ", 1), \n          20px 20px 0px rgba(").concat(colorsRGB[3], ", 1), \n          25px 25px 0px rgba(").concat(colorsRGB[4], ", 0), \n          30px 30px 0px rgba(").concat(colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(colorsRGB[5], ", 0)")
+    }
+  }, {
+    duration: duration,
+    selector: ".text"
+  }), new Anime.Anime({
+    animatedAttrs: {
+      textShadow: "5px 5px 0px rgba(".concat(colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(colorsRGB[1], ", 1), \n          15px 15px 0px rgba(").concat(colorsRGB[2], ", 0), \n          20px 20px 0px rgba(").concat(colorsRGB[3], ", 0), \n          25px 25px 0px rgba(").concat(colorsRGB[4], ", 0), \n          30px 30px 0px rgba(").concat(colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(colorsRGB[5], ", 0)")
+    },
+    initialValues: {
+      textShadow: " 5px 5px 0px rgba(".concat(colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(colorsRGB[1], ", 1), \n          15px 15px 0px rgba(").concat(colorsRGB[2], ", 1), \n          20px 20px 0px rgba(").concat(colorsRGB[3], ", 0), \n          25px 25px 0px rgba(").concat(colorsRGB[4], ", 0), \n          30px 30px 0px rgba(").concat(colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(colorsRGB[5], ", 0)")
+    }
+  }, {
+    duration: duration,
+    selector: ".text"
+  }), new Anime.Anime({
+    animatedAttrs: {
+      textShadow: "5px 5px 0px rgba(".concat(colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(colorsRGB[1], ", 0), \n          15px 15px 0px rgba(").concat(colorsRGB[2], ", 0), \n          20px 20px 0px rgba(").concat(colorsRGB[3], ", 0), \n          25px 25px 0px rgba(").concat(colorsRGB[4], ", 0), \n          30px 30px 0px rgba(").concat(colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(colorsRGB[5], ", 0)")
+    },
+    initialValues: {
+      textShadow: " 5px 5px 0px rgba(".concat(colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(colorsRGB[1], ", 1), \n          15px 15px 0px rgba(").concat(colorsRGB[2], ", 0), \n          20px 20px 0px rgba(").concat(colorsRGB[3], ", 0), \n          25px 25px 0px rgba(").concat(colorsRGB[4], ", 0), \n          30px 30px 0px rgba(").concat(colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(colorsRGB[5], ", 0)")
+    }
+  }, {
+    duration: duration,
+    selector: ".text"
+  }), new Anime.Anime({
+    animatedAttrs: {
+      textShadow: "5px 5px 0px rgba(".concat(colorsRGB[0], ",0), \n          10px 10px 0px rgba(").concat(colorsRGB[1], ", 0), \n          15px 15px 0px rgba(").concat(colorsRGB[2], ", 0), \n          20px 20px 0px rgba(").concat(colorsRGB[3], ", 0), \n          25px 25px 0px rgba(").concat(colorsRGB[4], ", 0), \n          30px 30px 0px rgba(").concat(colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(colorsRGB[5], ", 0)")
+    },
+    initialValues: {
+      textShadow: " 5px 5px 0px rgba(".concat(colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(colorsRGB[1], ", 0), \n          15px 15px 0px rgba(").concat(colorsRGB[2], ", 0), \n          20px 20px 0px rgba(").concat(colorsRGB[3], ", 0), \n          25px 25px 0px rgba(").concat(colorsRGB[4], ", 0), \n          30px 30px 0px rgba(").concat(colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(colorsRGB[5], ", 0)")
+    }
+  }, {
+    duration: duration,
+    selector: ".text"
+  })];
+});
 
-var Anime$3 = MotorCortex.loadPlugin(index);
-var fontFamilyHelper$3 = helpers.fontFamilyHelper;
+var Anime$1 = MotorCortex.loadPlugin(index$1);
+
+var _require = require("../helpers"),
+    fontFamilyHelper = _require.fontFamilyHelper;
 
 var Shadow = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
-  _inherits(Shadow, _MotorCortex$HTMLClip);
+  _inherits$1(Shadow, _MotorCortex$HTMLClip);
 
-  var _super = _createSuper(Shadow);
+  var _super = _createSuper$1(Shadow);
 
   function Shadow() {
-    _classCallCheck(this, Shadow);
+    _classCallCheck$1(this, Shadow);
 
     return _super.apply(this, arguments);
   }
 
-  _createClass(Shadow, [{
-    key: "buildTree",
-    value: function buildTree() {
-      var textSadow1 = new Anime$3.Anime({
-        animatedAttrs: {
-          textShadow: " 5px 5px 0px rgba(".concat(this.colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(this.colorsRGB[1], ", 0), \n          15px 15px 0px rgba(").concat(this.colorsRGB[2], ", 0), \n          20px 20px 0px rgba(").concat(this.colorsRGB[3], ", 0), \n          25px 25px 0px rgba(").concat(this.colorsRGB[4], ", 0), \n          30px 30px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(this.colorsRGB[5], ", 0)")
-        },
-        initialValues: {
-          textShadow: "5px 5px 0px rgba(".concat(this.colorsRGB[0], ",0), \n          10px 10px 0px rgba(").concat(this.colorsRGB[1], ", 0), \n          15px 15px 0px rgba(").concat(this.colorsRGB[2], ", 0), \n          20px 20px 0px rgba(").concat(this.colorsRGB[3], ", 0), \n          25px 25px 0px rgba(").concat(this.colorsRGB[4], ", 0), \n          30px 30px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(this.colorsRGB[5], ", 0)")
-        }
-      }, {
-        duration: 500 * this.speed,
-        selector: ".text"
-      });
-      var textSadow2 = new Anime$3.Anime({
-        animatedAttrs: {
-          textShadow: " 5px 5px 0px rgba(".concat(this.colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(this.colorsRGB[1], ", 1), \n          15px 15px 0px rgba(").concat(this.colorsRGB[2], ", 0), \n          20px 20px 0px rgba(").concat(this.colorsRGB[3], ", 0), \n          25px 25px 0px rgba(").concat(this.colorsRGB[4], ", 0), \n          30px 30px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(this.colorsRGB[5], ", 0)")
-        },
-        initialValues: {
-          textShadow: "5px 5px 0px rgba(".concat(this.colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(this.colorsRGB[1], ", 0), \n          15px 15px 0px rgba(").concat(this.colorsRGB[2], ", 0), \n          20px 20px 0px rgba(").concat(this.colorsRGB[3], ", 0), \n          25px 25px 0px rgba(").concat(this.colorsRGB[4], ", 0), \n          30px 30px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(this.colorsRGB[5], ", 0)")
-        }
-      }, {
-        duration: 500 * this.speed,
-        selector: ".text"
-      });
-      var textSadow3 = new Anime$3.Anime({
-        animatedAttrs: {
-          textShadow: " 5px 5px 0px rgba(".concat(this.colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(this.colorsRGB[1], ", 1), \n          15px 15px 0px rgba(").concat(this.colorsRGB[2], ", 1), \n          20px 20px 0px rgba(").concat(this.colorsRGB[3], ", 0), \n          25px 25px 0px rgba(").concat(this.colorsRGB[4], ", 0), \n          30px 30px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(this.colorsRGB[5], ", 0)")
-        },
-        initialValues: {
-          textShadow: "5px 5px 0px rgba(".concat(this.colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(this.colorsRGB[1], ", 1), \n          15px 15px 0px rgba(").concat(this.colorsRGB[2], ", 0), \n          20px 20px 0px rgba(").concat(this.colorsRGB[3], ", 0), \n          25px 25px 0px rgba(").concat(this.colorsRGB[4], ", 0), \n          30px 30px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(this.colorsRGB[5], ", 0)")
-        }
-      }, {
-        duration: 500 * this.speed,
-        selector: ".text"
-      });
-      var textSadow4 = new Anime$3.Anime({
-        animatedAttrs: {
-          textShadow: " 5px 5px 0px rgba(".concat(this.colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(this.colorsRGB[1], ", 1), \n          15px 15px 0px rgba(").concat(this.colorsRGB[2], ", 1), \n          20px 20px 0px rgba(").concat(this.colorsRGB[3], ", 1), \n          25px 25px 0px rgba(").concat(this.colorsRGB[4], ", 0), \n          30px 30px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(this.colorsRGB[5], ", 0)")
-        },
-        initialValues: {
-          textShadow: "5px 5px 0px rgba(".concat(this.colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(this.colorsRGB[1], ", 1), \n          15px 15px 0px rgba(").concat(this.colorsRGB[2], ", 1), \n          20px 20px 0px rgba(").concat(this.colorsRGB[3], ", 0), \n          25px 25px 0px rgba(").concat(this.colorsRGB[4], ", 0), \n          30px 30px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(this.colorsRGB[5], ", 0)")
-        }
-      }, {
-        duration: 500 * this.speed,
-        selector: ".text"
-      });
-      var textSadow5 = new Anime$3.Anime({
-        animatedAttrs: {
-          textShadow: " 5px 5px 0px rgba(".concat(this.colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(this.colorsRGB[1], ", 1), \n          15px 15px 0px rgba(").concat(this.colorsRGB[2], ", 1), \n          20px 20px 0px rgba(").concat(this.colorsRGB[3], ", 1), \n          25px 25px 0px rgba(").concat(this.colorsRGB[4], ", 1), \n          30px 30px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(this.colorsRGB[5], ", 0)")
-        },
-        initialValues: {
-          textShadow: "5px 5px 0px rgba(".concat(this.colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(this.colorsRGB[1], ", 1), \n          15px 15px 0px rgba(").concat(this.colorsRGB[2], ", 1), \n          20px 20px 0px rgba(").concat(this.colorsRGB[3], ", 1), \n          25px 25px 0px rgba(").concat(this.colorsRGB[4], ", 0), \n          30px 30px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(this.colorsRGB[5], ", 0)")
-        }
-      }, {
-        duration: 500 * this.speed,
-        selector: ".text"
-      });
-      var textSadow6 = new Anime$3.Anime({
-        animatedAttrs: {
-          textShadow: " 5px 5px 0px rgba(".concat(this.colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(this.colorsRGB[1], ", 1), \n          15px 15px 0px rgba(").concat(this.colorsRGB[2], ", 1), \n          20px 20px 0px rgba(").concat(this.colorsRGB[3], ", 1), \n          25px 25px 0px rgba(").concat(this.colorsRGB[4], ", 1), \n          30px 30px 0px rgba(").concat(this.colorsRGB[5], ", 1), \n          35px 35px 0px rgba(").concat(this.colorsRGB[5], ", 1), \n          40px 40px 0px rgba(").concat(this.colorsRGB[5], ", 1), \n          45px 45px 0px rgba(").concat(this.colorsRGB[5], ", 1)")
-        },
-        initialValues: {
-          textShadow: "5px 5px 0px rgba(".concat(this.colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(this.colorsRGB[1], ", 1), \n          15px 15px 0px rgba(").concat(this.colorsRGB[2], ", 1), \n          20px 20px 0px rgba(").concat(this.colorsRGB[3], ", 1), \n          25px 25px 0px rgba(").concat(this.colorsRGB[4], ", 1), \n          30px 30px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(this.colorsRGB[5], ", 0)")
-        }
-      }, {
-        duration: 500 * this.speed,
-        selector: ".text"
-      }); ///REVERSE
-
-      var textSadow1r = new Anime$3.Anime({
-        animatedAttrs: {
-          textShadow: "5px 5px 0px rgba(".concat(this.colorsRGB[0], ",0), \n          10px 10px 0px rgba(").concat(this.colorsRGB[1], ", 0), \n          15px 15px 0px rgba(").concat(this.colorsRGB[2], ", 0), \n          20px 20px 0px rgba(").concat(this.colorsRGB[3], ", 0), \n          25px 25px 0px rgba(").concat(this.colorsRGB[4], ", 0), \n          30px 30px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(this.colorsRGB[5], ", 0)")
-        },
-        initialValues: {
-          textShadow: " 5px 5px 0px rgba(".concat(this.colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(this.colorsRGB[1], ", 0), \n          15px 15px 0px rgba(").concat(this.colorsRGB[2], ", 0), \n          20px 20px 0px rgba(").concat(this.colorsRGB[3], ", 0), \n          25px 25px 0px rgba(").concat(this.colorsRGB[4], ", 0), \n          30px 30px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(this.colorsRGB[5], ", 0)")
-        }
-      }, {
-        duration: 500 * this.speed,
-        selector: ".text"
-      });
-      var textSadow2r = new Anime$3.Anime({
-        animatedAttrs: {
-          textShadow: "5px 5px 0px rgba(".concat(this.colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(this.colorsRGB[1], ", 0), \n          15px 15px 0px rgba(").concat(this.colorsRGB[2], ", 0), \n          20px 20px 0px rgba(").concat(this.colorsRGB[3], ", 0), \n          25px 25px 0px rgba(").concat(this.colorsRGB[4], ", 0), \n          30px 30px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(this.colorsRGB[5], ", 0)")
-        },
-        initialValues: {
-          textShadow: " 5px 5px 0px rgba(".concat(this.colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(this.colorsRGB[1], ", 1), \n          15px 15px 0px rgba(").concat(this.colorsRGB[2], ", 0), \n          20px 20px 0px rgba(").concat(this.colorsRGB[3], ", 0), \n          25px 25px 0px rgba(").concat(this.colorsRGB[4], ", 0), \n          30px 30px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(this.colorsRGB[5], ", 0)")
-        }
-      }, {
-        duration: 500 * this.speed,
-        selector: ".text"
-      });
-      var textSadow3r = new Anime$3.Anime({
-        animatedAttrs: {
-          textShadow: "5px 5px 0px rgba(".concat(this.colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(this.colorsRGB[1], ", 1), \n          15px 15px 0px rgba(").concat(this.colorsRGB[2], ", 0), \n          20px 20px 0px rgba(").concat(this.colorsRGB[3], ", 0), \n          25px 25px 0px rgba(").concat(this.colorsRGB[4], ", 0), \n          30px 30px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(this.colorsRGB[5], ", 0)")
-        },
-        initialValues: {
-          textShadow: " 5px 5px 0px rgba(".concat(this.colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(this.colorsRGB[1], ", 1), \n          15px 15px 0px rgba(").concat(this.colorsRGB[2], ", 1), \n          20px 20px 0px rgba(").concat(this.colorsRGB[3], ", 0), \n          25px 25px 0px rgba(").concat(this.colorsRGB[4], ", 0), \n          30px 30px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(this.colorsRGB[5], ", 0)")
-        }
-      }, {
-        duration: 500 * this.speed,
-        selector: ".text"
-      });
-      var textSadow4r = new Anime$3.Anime({
-        animatedAttrs: {
-          textShadow: "5px 5px 0px rgba(".concat(this.colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(this.colorsRGB[1], ", 1), \n          15px 15px 0px rgba(").concat(this.colorsRGB[2], ", 1), \n          20px 20px 0px rgba(").concat(this.colorsRGB[3], ", 0), \n          25px 25px 0px rgba(").concat(this.colorsRGB[4], ", 0), \n          30px 30px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(this.colorsRGB[5], ", 0)")
-        },
-        initialValues: {
-          textShadow: " 5px 5px 0px rgba(".concat(this.colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(this.colorsRGB[1], ", 1), \n          15px 15px 0px rgba(").concat(this.colorsRGB[2], ", 1), \n          20px 20px 0px rgba(").concat(this.colorsRGB[3], ", 1), \n          25px 25px 0px rgba(").concat(this.colorsRGB[4], ", 0), \n          30px 30px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(this.colorsRGB[5], ", 0)")
-        }
-      }, {
-        duration: 500 * this.speed,
-        selector: ".text"
-      });
-      var textSadow5r = new Anime$3.Anime({
-        animatedAttrs: {
-          textShadow: "5px 5px 0px rgba(".concat(this.colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(this.colorsRGB[1], ", 1), \n          15px 15px 0px rgba(").concat(this.colorsRGB[2], ", 1), \n          20px 20px 0px rgba(").concat(this.colorsRGB[3], ", 1), \n          25px 25px 0px rgba(").concat(this.colorsRGB[4], ", 0), \n          30px 30px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(this.colorsRGB[5], ", 0)")
-        },
-        initialValues: {
-          textShadow: " 5px 5px 0px rgba(".concat(this.colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(this.colorsRGB[1], ", 1), \n          15px 15px 0px rgba(").concat(this.colorsRGB[2], ", 1), \n          20px 20px 0px rgba(").concat(this.colorsRGB[3], ", 1), \n          25px 25px 0px rgba(").concat(this.colorsRGB[4], ", 1), \n          30px 30px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(this.colorsRGB[5], ", 0)")
-        }
-      }, {
-        duration: 500 * this.speed,
-        selector: ".text"
-      });
-      var textSadow6r = new Anime$3.Anime({
-        animatedAttrs: {
-          textShadow: "5px 5px 0px rgba(".concat(this.colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(this.colorsRGB[1], ", 1), \n          15px 15px 0px rgba(").concat(this.colorsRGB[2], ", 1), \n          20px 20px 0px rgba(").concat(this.colorsRGB[3], ", 1), \n          25px 25px 0px rgba(").concat(this.colorsRGB[4], ", 1), \n          30px 30px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          35px 35px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          40px 40px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n          45px 45px 0px rgba(").concat(this.colorsRGB[5], ", 0)")
-        },
-        initialValues: {
-          textShadow: " 5px 5px 0px rgba(".concat(this.colorsRGB[0], ",1), \n          10px 10px 0px rgba(").concat(this.colorsRGB[1], ", 1), \n          15px 15px 0px rgba(").concat(this.colorsRGB[2], ", 1), \n          20px 20px 0px rgba(").concat(this.colorsRGB[3], ", 1), \n          25px 25px 0px rgba(").concat(this.colorsRGB[4], ", 1), \n          30px 30px 0px rgba(").concat(this.colorsRGB[5], ", 1), \n          35px 35px 0px rgba(").concat(this.colorsRGB[5], ", 1), \n          40px 40px 0px rgba(").concat(this.colorsRGB[5], ", 1), \n          45px 45px 0px rgba(").concat(this.colorsRGB[5], ", 1)")
-        }
-      }, {
-        duration: 500 * this.speed,
-        selector: ".text"
-      });
-      this.addIncident(textSadow1, 0);
-      this.addIncident(textSadow2, 500 * this.speed);
-      this.addIncident(textSadow3, 1000 * this.speed);
-      this.addIncident(textSadow4, 1500 * this.speed);
-      this.addIncident(textSadow5, 2000 * this.speed);
-      this.addIncident(textSadow6, 2500 * this.speed);
-
-      if (this.attrs.reverce) {
-        this.addIncident(textSadow6r, 3000 * this.speed);
-        this.addIncident(textSadow5r, 3500 * this.speed);
-        this.addIncident(textSadow4r, 4000 * this.speed);
-        this.addIncident(textSadow3r, 4500 * this.speed);
-        this.addIncident(textSadow2r, 5000 * this.speed);
-        this.addIncident(textSadow1r, 5500 * this.speed);
-      }
-    }
-  }, {
+  _createClass$1(Shadow, [{
     key: "fonts",
     get: function get() {
       var font = [{
         type: "google-font",
-        src: "https://fonts.googleapis.com/css2?family=".concat(fontFamilyHelper$3(this.attrs.fontFamily, this.attrs.fontWeight), "&display=swap")
+        src: "https://fonts.googleapis.com/css2?family=".concat(fontFamilyHelper(this.attrs.fontFamily, this.attrs.fontWeight), "&display=swap")
       }];
       return font;
     }
   }, {
     key: "html",
     get: function get() {
-      this.speed = this.attrs.speed ? this.attrs.speed : 1;
-      return "\n      <div class=\"wrapper\">\n        <div class=\"container\">\n          <div class=\"text\">".concat(this.attrs.text, "</div>\n        </div>\n      </div>\n    ");
+      return "\n        <div class=\"container\">\n          <div class=\"text\">".concat(this.attrs.text, "</div>\n        </div>\n    ");
     }
   }, {
     key: "css",
@@ -2768,62 +2733,37 @@ var Shadow = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
       this.colorsRGB = this.attrs.colors.map(function (c) {
         return hexToRGB(c);
       });
-      return "\n\n    .wrapper{\n      width: 100%;\n      height: 100%;\n      display: flex;\n      align-content: center;\n      justify-content: center;\n      align-items: center;\n    }\n  \n    .container {\n      width: ".concat(this.attrs.width, "px;\n      height: ").concat(this.attrs.height, "px;\n      display: flex;\n      flex-direction: column;\n      justify-content: center;\n      align-items: center;\n      overflow: hidden;\n      color: ").concat(this.attrs.textColor, ";\n      \n    }\n    .text{\n      font-size: 15rem;\n      text-align: center;\n      width: 100%;\n      color: ").concat(this.attrs.textColor, ";\n      background: ").concat(this.attrs.background, ";\n      font-family: ").concat(this.attrs.fontFamily, ", cursive;\n      font-weight: 700;\n      text-shadow: 5px 5px 0px rgba(").concat(this.colorsRGB[0], ",1), \n        10px 10px 0px rgba(").concat(this.colorsRGB[1], ", 0), \n        15px 15px 0px rgba(").concat(this.colorsRGB[2], ", 0), \n        20px 20px 0px rgba(").concat(this.colorsRGB[3], ", 0), \n        25px 25px 0px rgba(").concat(this.colorsRGB[4], ", 0), \n        30px 30px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n        35px 35px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n        40px 40px 0px rgba(").concat(this.colorsRGB[5], ", 0), \n        45px 45px 0px rgba(").concat(this.colorsRGB[5], ", 0);\n  ");
+      return "\n      .container {\n        width: ".concat(this.attrs.width, "px;\n        height: ").concat(this.attrs.height, "px;\n        display: flex;\n        flex-direction: column;\n        justify-content: center;\n        align-items: center;\n        overflow: hidden;\n        color: ").concat(this.attrs.textColor, ";\n      }\n\n      .text{\n        font-size: ").concat(this.attrs.fontSize, "px;\n        text-align: center;\n        width: 100%;\n        color: ").concat(this.attrs.textColor, ";\n        background: ").concat(this.attrs.background, ";\n        font-family: ").concat(this.attrs.fontFamily, ", cursive;\n        font-weight: 700;\n    ");
+    }
+  }, {
+    key: "buildTree",
+    value: function buildTree() {
+      var incidents = loadIncidents(Anime$1, this.colorsRGB, 500);
+      var length = this.attrs.reverse ? incidents.length : incidents.length / 2;
+
+      for (var i = 0; i < length; i++) {
+        this.addIncident(incidents[i], i * 500);
+      }
     }
   }]);
 
   return Shadow;
 }(MotorCortex.HTMLClip);
 
-var Shadow_1 = Shadow;
-
-var Anime$4 = MotorCortex.loadPlugin(index);
+var Anime = MotorCortex.loadPlugin(index$1);
 
 var FontWeight = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
-  _inherits(FontWeight, _MotorCortex$HTMLClip);
+  _inherits$1(FontWeight, _MotorCortex$HTMLClip);
 
-  var _super = _createSuper(FontWeight);
+  var _super = _createSuper$1(FontWeight);
 
   function FontWeight() {
-    _classCallCheck(this, FontWeight);
+    _classCallCheck$1(this, FontWeight);
 
     return _super.apply(this, arguments);
   }
 
-  _createClass(FontWeight, [{
-    key: "buildTree",
-    value: function buildTree() {
-      var fontWeight = new MotorCortex.Combo({
-        incidents: [{
-          incidentClass: Anime$4.Anime,
-          attrs: {
-            animatedAttrs: {
-              fontWeight: "900"
-            }
-          },
-          props: {
-            duration: 300
-          },
-          position: 0
-        }, {
-          incidentClass: Anime$4.Anime,
-          attrs: {
-            animatedAttrs: {
-              fontWeight: "100"
-            }
-          },
-          props: {
-            duration: 300
-          },
-          position: 300
-        }]
-      }, {
-        selector: ".text-item",
-        delay: "@stagger(0, 300)"
-      });
-      this.addIncident(fontWeight, 0);
-    }
-  }, {
+  _createClass$1(FontWeight, [{
     key: "fonts",
     get: function get() {
       var wordlist = this.attrs.fontFamily.split(" ").join("+");
@@ -2839,7 +2779,7 @@ var FontWeight = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
     get: function get() {
       var textList = [];
 
-      for (var i = 1; i <= this.attrs.rows; i++) {
+      for (var i = 1; i <= this.attrs.repeats; i++) {
         textList.push("<div class=\"text-item\">".concat(this.attrs.text, "</div>"));
       }
 
@@ -2848,14 +2788,45 @@ var FontWeight = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
   }, {
     key: "css",
     get: function get() {
-      return "\n\n    .wrapper{\n      width: ".concat(this.attrs.width, "px;\n      height: ").concat(this.attrs.height, "px;\n      display: flex;\n      align-content: center;\n      justify-content: center;\n      align-items: center;\n    }\n    .text{\n      font-size:").concat(this.attrs.fontSize, "px;\n      color:").concat(this.attrs.color, ";\n      text-transform:uppercase;\n      font-family: ").concat(this.attrs.fontFamily, ";\n      position: absolute;\n      font-weight: 100;\n    }\n   \n  ");
+      return "\n    .wrapper{\n      width: ".concat(this.attrs.width, "px;\n      height: ").concat(this.attrs.height, "px;\n      display: flex;\n      align-content: center;\n      justify-content: center;\n      align-items: center;\n    }\n    .text{\n      font-size:").concat(this.attrs.fontSize, "px;\n      color:").concat(this.attrs.textColor, ";\n      text-transform:uppercase;\n      font-family: ").concat(this.attrs.fontFamily, ";\n      position: absolute;\n      font-weight: 100;\n      transform:rotate(").concat(this.attrs.rotate || 0, "deg);\n    }\n   \n  ");
+    }
+  }, {
+    key: "buildTree",
+    value: function buildTree() {
+      var fontWeight = new MotorCortex.Combo({
+        incidents: [{
+          incidentClass: Anime.Anime,
+          attrs: {
+            animatedAttrs: {
+              fontWeight: "900"
+            }
+          },
+          props: {
+            duration: 300
+          },
+          position: 0
+        }, {
+          incidentClass: Anime.Anime,
+          attrs: {
+            animatedAttrs: {
+              fontWeight: "100"
+            }
+          },
+          props: {
+            duration: 300
+          },
+          position: 300
+        }]
+      }, {
+        selector: ".text-item",
+        delay: "@expression(index * 20)"
+      });
+      this.addIncident(fontWeight, 0);
     }
   }]);
 
   return FontWeight;
 }(MotorCortex.HTMLClip);
-
-var FontWeight_1 = FontWeight;
 
 var SvgExplosionValidation = {
   text: {
@@ -2916,9 +2887,8 @@ var SvgLineValidation = {
   fontFamily: {
     type: "string"
   },
-  speed: {
-    type: "number",
-    optional: true
+  verticalAlign: {
+    type: "string"
   }
 };
 var ShadowValidation = {
@@ -2940,9 +2910,6 @@ var ShadowValidation = {
   fontSize: {
     type: "number"
   },
-  speed: {
-    type: "number"
-  },
   fontFamily: {
     type: "string"
   },
@@ -2956,34 +2923,64 @@ var ShadowValidation = {
     optional: true,
     type: "color"
   },
-  reverce: {
+  reverse: {
     type: "boolean"
   }
 };
+var FontWeightValidation = {
+  text: {
+    type: "string"
+  },
+  fontWeightList: {
+    type: "array",
+    items: {
+      type: "number"
+    }
+  },
+  repeats: {
+    type: "number",
+    min: 1
+  },
+  width: {
+    type: "number"
+  },
+  height: {
+    type: "number"
+  },
+  fontSize: {
+    type: "number"
+  },
+  fontFamily: {
+    type: "string"
+  },
+  textColor: {
+    type: "color"
+  }
+};
 
-var name$1 = "@kissmybutton/motorcortex-textfxs";
-var version$1 = "0.1.3";
+var name = "@kissmybutton/motorcortex-textfxs";
+var version = "0.1.3";
 
-var index$1 = {
-  npm_name: name$1,
-  version: version$1,
+var index = {
+  npm_name: name,
+  version: version,
   incidents: [{
-    exportable: SvgExplosion_1,
+    exportable: SvgExplosion,
     name: "SvgExplosion",
     attributesValidationRules: SvgExplosionValidation
   }, {
-    exportable: SvgLines_1,
+    exportable: SvgLines,
     name: "SvgLines",
     attributesValidationRules: SvgLineValidation
   }, {
-    exportable: Shadow_1,
+    exportable: Shadow,
     name: "Shadow",
     attributesValidationRules: ShadowValidation
   }, {
-    exportable: FontWeight_1,
-    name: "FontWeight" // attributesValidationRules: attrs.ShadowValidation
-
+    exportable: FontWeight,
+    name: "FontWeight",
+    attributesValidationRules: FontWeightValidation
   }]
 };
 
-export default index$1;
+export default index;

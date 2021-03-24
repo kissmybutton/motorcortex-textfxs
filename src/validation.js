@@ -48,9 +48,8 @@ export const SvgLineValidation = {
   fontFamily: {
     type: "string"
   },
-  speed: {
-    type: "number",
-    optional: true
+  verticalAlign: {
+    type: "string"
   }
 };
 
@@ -73,9 +72,6 @@ export const ShadowValidation = {
   fontSize: {
     type: "number"
   },
-  speed: {
-    type: "number"
-  },
   fontFamily: {
     type: "string"
   },
@@ -84,5 +80,26 @@ export const ShadowValidation = {
   },
   height: { type: "number" },
   background: { optional: true, type: "color" },
-  reverce: { type: "boolean" }
+  reverse: { type: "boolean" }
+};
+
+export const FontWeightValidation = {
+  text: {
+    type: "string"
+  },
+  fontWeightList: { type: "array", items: { type: "number" } },
+  repeats: { type: "number", min: 1 },
+  width: {
+    type: "number"
+  },
+  height: { type: "number" },
+  fontSize: {
+    type: "number"
+  },
+  fontFamily: {
+    type: "string"
+  },
+  textColor: {
+    type: "color"
+  }
 };

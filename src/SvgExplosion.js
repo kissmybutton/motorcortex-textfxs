@@ -1,55 +1,73 @@
-const MotorCortex = require("@kissmybutton/motorcortex");
-const AnimeDefinition = require("@kissmybutton/motorcortex-anime");
-const { fontFamilyHelper } = require("./helpers");
+import MotorCortex from "@kissmybutton/motorcortex";
+import AnimeDefinition from "@kissmybutton/motorcortex-anime";
 const Anime = MotorCortex.loadPlugin(AnimeDefinition);
+const { fontFamilyHelper } = require("./helpers");
 
-
-class SvgExplosion extends MotorCortex.HTMLClip {
-
-  get fonts(){
-    const font =[
+export default class SvgExplosion extends MotorCortex.HTMLClip {
+  get fonts() {
+    const family = fontFamilyHelper(
+      this.attrs.fontFamily,
+      this.attrs.fontWeight
+    );
+    const font = [
       {
-          type: `google-font`,
-          src: `https://fonts.googleapis.com/css2?family=${fontFamilyHelper(this.attrs.fontFamily,this.attrs.fontWeight)}&display=swap`
-        },
-    ]
-    return font
+        type: `google-font`,
+        src: `https://fonts.googleapis.com/css2?family=${family}&display=swap`
+      }
+    ];
+    return font;
   }
 
   get html() {
-    this.speed = this.attrs.speed ? this.attrs.speed : 1;
-    this.array = this.attrs.text.split("");
-    this.textSize = this.attrs.width / this.array.length; //40 // window.innerWidth/(array.length + 2)
-    let html3 = "";
-    let poly = "";
-    let circ = "";
+    const { text, colors, width } = this.attrs;
+    this.textSize = width / text.length;
+    let allCharElements = "";
+    let polygons = "";
+    let circles = "";
 
-    for (let i = 0; i < this.array.length; i++) {
-      const html = `<span id="text" style="color : ${
-        this.attrs.colors[i % this.attrs.colors.length]
-      };" class='letter letter-${i}'>${this.array[i]}</span>`;
-      html3 += html;
+    for (let i = 0; i < text.length; i++) {
+      const style = `color : ${colors[i % colors.length]};`;
+      const singleChar = text.slice(i, i + 1);
+      const singleCharElement = `<span 
+          id="text"
+          style="${style}"
+          class="letter letter-${i}"
+        >
+            ${singleChar}
+        </span>`;
+
+      allCharElements += singleCharElement;
+
       for (let j = 0; j < 8; j++) {
-        poly += `<polygon class="poligon-${i}-${j} poligon" points="0,0 ${this
-          .textSize *
-          0.1 *
-          2},0 ${this.textSize * 0.1},${this.textSize *
-          0.1 *
-          2}" style="fill: ${
-          this.attrs.colors[i % this.attrs.colors.length]
-        };"></polygon>`;
-        circ += `<circle r="${this.textSize *
-          0.052}" class="circ-${i}-${j} circ" style="fill: rgb(238, 238, 238);"></circle>`;
+        const point1 = this.textSize * 0.1 * 2;
+        const point2 = this.textSize * 0.1;
+        const point3 = this.textSize * 0.1 * 2;
+        polygons += `
+          <polygon 
+            class="poligon-${i}-${j} poligon"
+            points="0,0 ${point1},0 ${point2},${point3}"
+            style="fill: ${colors[i % colors.length]};"
+          ></polygon>`;
+
+        circles += `
+          <circle 
+            r="${this.textSize * 0.052}"
+            class="circ circ-${i}-${j}"
+            style="fill:rgb(238, 238, 238);"
+          ></circle>`;
       }
     }
     const html = `
       <div class="wrapper">
         <div class="container">
-          <p id="text" style="font-size:${this.textSize}px" class="text">${html3}</p>
-    
+          <p 
+            id="text"
+            style="font-size:${this.textSize}px"
+            class="text"
+          >${allCharElements}</p>
           <svg id="svg">
-          ${poly}
-          ${circ}
+          ${polygons}
+          ${circles}
           </svg>
         </div>
       </div>
@@ -59,67 +77,67 @@ class SvgExplosion extends MotorCortex.HTMLClip {
 
   get css() {
     return `
-    svg {
-      width: 100%;
-      position: absolute;
-      top: 0px;
-      left: 0px;
-      z-index: 0;
-      top: 50%;
+      svg {
+        width: 100%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        z-index: 0;
+        top: 50%;
         transform: translateY(-50%);
         overflow: overlay;
-    }
-    
-    .text, .offscreen-text {
-      width: 100%;
-      top: 50%;
-      transform: translateY(-50%);
-      display: block;
-      margin: 0;
-      text-align: center;
-      font-family: ${this.attrs.fontFamily}
-    }
-    
-    .offscreen-text {
-      text-align: center;
-      top: -9999px;
-    }
-    
-    
-    .letter{
-      display:inline-block;
-      font-weight: 800;
-    }
-    .poligon{
-      opacity:0
-    }
-    .container{
-      width: ${this.attrs.width}px;
-      height: ${this.attrs.height}px;
-      overflow: hidden;
-      background: ${this.attrs.background};
-      display: flex;
-      align-content: center;
-      align-items: center;
-      position: relative;
-    }
-    .wrapper{
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-content: center;
-      justify-content: center;
-      align-items: center;
-    }
+      }
+      
+      .text, .offscreen-text {
+        width: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+        display: block;
+        margin: 0;
+        text-align: center;
+        font-family: ${this.attrs.fontFamily}
+      }
+      
+      .offscreen-text {
+        text-align: center;
+        top: -9999px;
+      }
+      
+      .letter{
+        display:inline-block;
+        font-weight: 800;
+      }
+
+      .poligon{
+        opacity:0
+      }
+
+      .container{
+        width: ${this.attrs.width}px;
+        height: ${this.attrs.height}px;
+        overflow: hidden;
+        background: ${this.attrs.background};
+        display: flex;
+        align-content: center;
+        align-items: center;
+        position: relative;
+      }
+
+      .wrapper{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+      }
   `;
   }
 
   buildTree() {
-    let waitTIme = 0;
-    let polyPosition = (this.textSize * this.array.length) / 2;
-    for (let i = 0; i < this.array.length; i++) {
+    let polyPosition = (this.textSize * this.attrs.text.length) / 2;
+    for (let i = 0; i < this.attrs.text.length; i++) {
       const rotation = -50 + Math.random() * 100;
-
       const textAnimation = new Anime.Anime(
         {
           animatedAttrs: {
@@ -141,12 +159,13 @@ class SvgExplosion extends MotorCortex.HTMLClip {
           }
         },
         {
-          duration: 200*this.attrs.speed,
+          duration: 200,
           selector: ".letter-" + i,
           easing: "easeOutExpo"
         }
       );
       const polyMcGrou = new MotorCortex.Group();
+      let waitTIme = 0;
       for (let j = 0; j < 8; j++) {
         const a = Math.random();
         const a2 = a + (-0.2 + Math.random() * 0.4);
@@ -198,7 +217,7 @@ class SvgExplosion extends MotorCortex.HTMLClip {
             }
           },
           {
-            duration: 600*this.attrs.speed,
+            duration: 600,
             selector: `.circ-${i}-${j}`,
             easing: "easeOutQuint"
           }
@@ -225,7 +244,7 @@ class SvgExplosion extends MotorCortex.HTMLClip {
             }
           },
           {
-            duration: 600*this.attrs.speed,
+            duration: 600,
             selector: `.poligon-${i}-${j}`,
             easing: "easeOutQuint"
           }
@@ -254,18 +273,16 @@ class SvgExplosion extends MotorCortex.HTMLClip {
           }
         },
         {
-          duration: 200*this.attrs.speed,
+          duration: 200,
           selector: ".letter-" + i,
           easing: "easeOutExpo"
         }
       );
 
-      this.addIncident(textAnimation, (200 * (i + 1) + waitTIme)*this.attrs.speed);
-      this.addIncident(polyMcGrou, (200 * (i + 1) + waitTIme)*this.attrs.speed);
-      this.addIncident(textAnimation2, (200 + 200 * (i + 1) + waitTIme)*this.attrs.speed);
+      this.addIncident(textAnimation, 200 * (i + 1) + waitTIme);
+      this.addIncident(polyMcGrou, 200 * (i + 1) + waitTIme);
+      this.addIncident(textAnimation2, 200 + 200 * (i + 1) + waitTIme);
       waitTIme = 200 * (i + 1);
     }
   }
 }
-
-module.exports = SvgExplosion;

@@ -1,32 +1,26 @@
-const MotorCortex = require("@kissmybutton/motorcortex");
-const AnimeDefinition = require("@kissmybutton/motorcortex-anime");
+import MotorCortex from "@kissmybutton/motorcortex";
+import AnimeDefinition from "@kissmybutton/motorcortex-anime";
 const Anime = MotorCortex.loadPlugin(AnimeDefinition);
 
-class FontWeight extends MotorCortex.HTMLClip {
- 
-
-
-  get fonts(){
-    let wordlist=this.attrs.fontFamily.split(" ").join("+")
-    
-      wordlist+=`:wght@${this.attrs.fontWeightList.join(";")}`
-    
-
-    const font =[
+export default class FontWeight extends MotorCortex.HTMLClip {
+  get fonts() {
+    let wordlist = this.attrs.fontFamily.split(" ").join("+");
+    wordlist += `:wght@${this.attrs.fontWeightList.join(";")}`;
+    const font = [
       {
-          type: `google-font`,
-          src: `https://fonts.googleapis.com/css2?family=${wordlist}&display=swap`
-        },
-    ]
-    return font
+        type: `google-font`,
+        src: `https://fonts.googleapis.com/css2?family=${wordlist}&display=swap`
+      }
+    ];
+    return font;
   }
-
 
   get html() {
     const textList = [];
-    for (let i = 1; i <= this.attrs.rows; i++) {
+    for (let i = 1; i <= this.attrs.repeats; i++) {
       textList.push(`<div class="text-item">${this.attrs.text}</div>`);
     }
+
     return `
     <div class="wrapper">
       <div class="text">
@@ -38,7 +32,6 @@ class FontWeight extends MotorCortex.HTMLClip {
 
   get css() {
     return `
-
     .wrapper{
       width: ${this.attrs.width}px;
       height: ${this.attrs.height}px;
@@ -49,11 +42,12 @@ class FontWeight extends MotorCortex.HTMLClip {
     }
     .text{
       font-size:${this.attrs.fontSize}px;
-      color:${this.attrs.color};
+      color:${this.attrs.textColor};
       text-transform:uppercase;
       font-family: ${this.attrs.fontFamily};
       position: absolute;
       font-weight: 100;
+      transform:rotate(${this.attrs.rotate || 0}deg);
     }
    
   `;
@@ -62,29 +56,28 @@ class FontWeight extends MotorCortex.HTMLClip {
   buildTree() {
     const fontWeight = new MotorCortex.Combo(
       {
-        incidents:[
+        incidents: [
           {
             incidentClass: Anime.Anime,
-            attrs:{
+            attrs: {
               animatedAttrs: {
                 fontWeight: "900"
               }
             },
-            props:{
-              duration:300,
+            props: {
+              duration: 300
             },
             position: 0
           },
           {
             incidentClass: Anime.Anime,
-            attrs:{
+            attrs: {
               animatedAttrs: {
                 fontWeight: "100"
               }
             },
-            props:{
-              duration:300,
-             
+            props: {
+              duration: 300
             },
             position: 300
           }
@@ -92,11 +85,9 @@ class FontWeight extends MotorCortex.HTMLClip {
       },
       {
         selector: `.text-item`,
-        delay: `@stagger(0, 300)`
+        delay: `@expression(index * 20)`
       }
-    )
-    this.addIncident(fontWeight,0)
+    );
+    this.addIncident(fontWeight, 0);
   }
 }
-
-module.exports = FontWeight;

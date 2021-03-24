@@ -1,41 +1,40 @@
-const MotorCortex = require("@kissmybutton/motorcortex");
-const AnimeDefinition = require("@kissmybutton/motorcortex-anime");
+import MotorCortex from "@kissmybutton/motorcortex";
+import AnimeDefinition from "@kissmybutton/motorcortex-anime";
+
 const Anime = MotorCortex.loadPlugin(AnimeDefinition);
 const { fontFamilyHelper } = require("./helpers");
 
-class SvgLines extends MotorCortex.HTMLClip {
-
-
-  get fonts(){
-    const font =[
+export default class SvgLines extends MotorCortex.HTMLClip {
+  get fonts() {
+    const font = [
       {
-          type: `google-font`,
-          src: `https://fonts.googleapis.com/css2?family=${fontFamilyHelper(this.attrs.fontFamily,this.attrs.fontWeight)}&display=swap`
-        },
-    ]
-    return font
+        type: `google-font`,
+        src: `https://fonts.googleapis.com/css2?family=${fontFamilyHelper(
+          this.attrs.fontFamily,
+          this.attrs.fontWeight
+        )}&display=swap`
+      }
+    ];
+    return font;
   }
 
   get html() {
-    this.speed = this.attrs.speed ? this.attrs.speed : 1;
+    const y = this.attrs.verticalAlign || "50%";
     return `
-    <div class="wrapper">
-    <div class="container">
-    <svg viewBox="0 0 ${this.attrs.width} ${this.attrs.height}">
-  <symbol id="s-text">
-
-    <text text-anchor="middle" x="50%" y="68%" class="text--line">${this.attrs.text}</text>
-  </symbol>
-  <g class="g-ants">
-    <use xlink:href="#s-text" class="text-copy"></use>
-    <use xlink:href="#s-text" class="text-copy"></use>
-    <use xlink:href="#s-text" class="text-copy"></use>
-    <use xlink:href="#s-text" class="text-copy"></use>
-    <use xlink:href="#s-text" class="text-copy"></use>
-  </g>
-</svg> 
-</div>
-</div>
+        <div class="container">
+          <svg>
+            <symbol id="s-text">
+              <text text-anchor="middle" x="50%" y="${y}" class="text--line">${this.attrs.text}</text>
+            </symbol>
+            <g class="g-ants">
+              <use xlink:href="#s-text" class="text-copy"></use>
+              <use xlink:href="#s-text" class="text-copy"></use>
+              <use xlink:href="#s-text" class="text-copy"></use>
+              <use xlink:href="#s-text" class="text-copy"></use>
+              <use xlink:href="#s-text" class="text-copy"></use>
+            </g>
+          </svg> 
+        </div>
     `;
   }
 
@@ -51,29 +50,17 @@ class SvgLines extends MotorCortex.HTMLClip {
       align-items: center;
       position: relative;
     }
-    .wrapper{
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-content: center;
-      justify-content: center;
-      align-items: center;
-    }
     .g-ants{
       position: relative;
     }
-    
     .text--line {
       font-size: ${this.attrs.fontSize}px;
       font-family: ${this.attrs.fontFamily}
     }
-    
     svg {
-     
       width: 100%;
       height: 100%;
     }
-    
     .text-copy {
       fill: none;
       stroke: white;
@@ -104,7 +91,7 @@ class SvgLines extends MotorCortex.HTMLClip {
   }
 
   buildTree() {
-    const textSadow1 = new Anime.Anime(
+    const svgline = new Anime.Anime(
       {
         animatedAttrs: {
           strokeDashoffset: "35%",
@@ -112,13 +99,10 @@ class SvgLines extends MotorCortex.HTMLClip {
         }
       },
       {
-        duration: 2000 * this.speed,
+        duration: 4000,
         selector: `.text-copy`
       }
     );
-
-    this.addIncident(textSadow1, 0);
+    this.addIncident(svgline, 0);
   }
 }
-
-module.exports = SvgLines;
