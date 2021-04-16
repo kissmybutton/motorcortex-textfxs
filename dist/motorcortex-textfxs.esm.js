@@ -2959,7 +2959,7 @@ var FontWeightValidation = {
 };
 
 var name = "@kissmybutton/motorcortex-textfxs";
-var version = "0.1.4";
+var version = "0.1.5";
 
 var index = {
   npm_name: name,
