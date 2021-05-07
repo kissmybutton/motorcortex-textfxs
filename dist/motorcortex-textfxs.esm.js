@@ -209,7 +209,7 @@ function _isNativeReflectConstruct() {
   if (typeof Proxy === "function") return true;
 
   try {
-    Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
+    Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
     return true;
   } catch (e) {
     return false;
@@ -233,11 +233,13 @@ function _possibleConstructorReturn(self, call) {
 }
 
 function _createSuper(Derived) {
-  return function () {
+  var hasNativeReflectConstruct = _isNativeReflectConstruct();
+
+  return function _createSuperInternal() {
     var Super = _getPrototypeOf(Derived),
         result;
 
-    if (_isNativeReflectConstruct()) {
+    if (hasNativeReflectConstruct) {
       var NewTarget = _getPrototypeOf(this).constructor;
 
       result = Reflect.construct(Super, arguments, NewTarget);
@@ -1301,39 +1303,35 @@ var Anime$4 = /*#__PURE__*/function (_MotorCortex$Effect) {
             continue;
           }
 
-          options[compoAttribute[i]] = [this.getInitialValue()[compoAttribute[i]], this.targetValue[compoAttribute[i]]];
+          options[compoAttribute[i]] = [this.initialValue[compoAttribute[i]], this.targetValue[compoAttribute[i]]];
         }
       } else {
-        options[this.attributeKey] = [this.getInitialValue(), this.targetValue];
+        options[this.attributeKey] = [this.initialValue, this.targetValue];
       }
 
-      this.target = anime_es(_objectSpread2({
+      this.target = anime_es(_objectSpread2(_objectSpread2({
         autoplay: false,
         duration: this.props.duration,
         easing: "linear",
         targets: this.element
-      }, (this.attrs || {}).attrs || {}, {}, options)); // handle first render initial values
+      }, (this.attrs || {}).attrs || {}), options)); // handle first render initial values
     }
   }, {
     key: "getScratchValue",
     value: function getScratchValue() {
-      if (this.attributeKey === "transform") {
-        var obj = {};
-        var transform = compositeAttributes[this.attributeKey];
-        var currentTransform = getMatrix2D(this.context.window, this.element);
-
-        for (var i = 0; i < transform.length; i++) {
-          if (Object.prototype.hasOwnProperty.call(currentTransform, transform[i])) {
-            obj[transform[i]] = currentTransform[transform[i]];
-          } else {
-            obj[transform[i]] = anime_es.get(this.element, transform[i]);
-          }
-        }
-
-        return obj;
+      if (this.attributeKey !== "transform") {
+        return anime_es.get(this.element, this.attributeKey);
       }
 
-      return anime_es.get(this.element, this.attributeKey);
+      var obj = {};
+      var transform = compositeAttributes[this.attributeKey];
+      var currentTransform = getMatrix2D(this.context.window, this.element);
+
+      for (var i = 0; i < transform.length; i++) {
+        obj[transform[i]] = Object.prototype.hasOwnProperty.call(currentTransform, transform[i]) ? currentTransform[transform[i]] : anime_es.get(this.element, transform[i]);
+      }
+
+      return obj;
     }
     /**
      * @param {number} f
@@ -2267,7 +2265,7 @@ var animatedAttrs = {
   }
 };
 var name$1 = "@kissmybutton/motorcortex-anime";
-var version$1 = "2.1.12";
+var version$1 = "2.1.14";
 var index$1 = {
   npm_name: name$1,
   version: version$1,
