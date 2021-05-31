@@ -70,6 +70,10 @@ export default class Shadow extends MotorCortex.HTMLClip {
         background: ${this.attrs.background};
         font-family: ${this.attrs.fontFamily}, cursive;
         font-weight: 700;
+        height:100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     `;
   }
 
