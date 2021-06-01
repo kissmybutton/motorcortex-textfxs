@@ -83,7 +83,7 @@
     "@babel/preset-env": "7.14.2",
     "@commitlint/cli": "7.6.1",
     "@commitlint/config-conventional": "7.6.0",
-    "@kissmybutton/motorcortex": "^7.0.1",
+    "@kissmybutton/motorcortex": "7.0.1",
     "@kissmybutton/motorcortex-player": "2.0.5",
     "@rollup/plugin-json": "4.1.0",
     "@semantic-release/changelog": "3.0.6",
@@ -131,13 +131,13 @@
     "webpack-cli": "3.3.12",
     "webpack-dev-server": "3.11.2",
     "whatwg-fetch": "3.6.2",
-    "browserslist": "^4.7.0",
-    "caniuse-lite": "^1.0.30000997",
-    "rollup": "^2.42.3",
-    "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-terser": "^7.0.2"
+    "browserslist": "4.16.3",
+    "caniuse-lite": "1.0.30001204",
+    "rollup": "2.42.3",
+    "rollup-plugin-babel": "4.4.0",
+    "rollup-plugin-commonjs": "10.1.0",
+    "rollup-plugin-node-resolve": "5.2.0",
+    "rollup-plugin-terser": "7.0.2"
   },
   "husky": {
     "hooks": {
