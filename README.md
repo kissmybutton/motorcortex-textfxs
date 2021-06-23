@@ -35,7 +35,6 @@ const SvgLines = new Plugin.SvgLines(
     strokeWidth: 3,
     fontSize: 250,
     fontFamily: "Rubik Mono One",
-    speed: 0.75
   },
   {
     selector: ".container3"
@@ -52,7 +51,6 @@ const SvgLines = new Plugin.SvgLines(
 | height |  total height of clip container   |  all positive numbers |
 | background |  the color of background |  hex values or RGB(A) or text ("blue", "red", etc)  |
 | colors |  the list colors of svg elementes |  hex values or RGB(A) or text ("blue", "red", etc)  |
-| speed |  animation speed. Defaults to 1  |  num, min:0 |
 | fontFamily |  font family  |  string |
 | fontSize |  size of the font  |  number |
 | fontWeight | the Weight of the font | number|
@@ -76,7 +74,6 @@ const SvgExplosion = new Plugin.SvgExplosion(
       "#70B984"
     ],
     fontFamily: "Rubik Mono One",
-    speed: 0.75
   },
   {
     selector: ".container1"
@@ -109,7 +106,6 @@ const Shadow = new Plugin.Shadow(
     background: "#d52e3f",
     colors: ["#e942f5", "#efa032", "#46b59b", "#017e7f", "#052939", "#c11a2b"],
     fontSize: 250,
-    speed: 0.75,
     textColor: "#fcedd8",
     fontFamily: "Pacifico",
     reverce: false
