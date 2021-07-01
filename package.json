@@ -116,7 +116,7 @@
     "npm-check-updates": "*",
     "npx": "*",
     "prettier": "1.19.1",
-    "rimraf": "2.7.1",
+    "rimraf": "3.0.2",
     "sass-loader": "7.3.1",
     "semantic-release": "^15.13.2",
     "shelljs": "0.8.4",
